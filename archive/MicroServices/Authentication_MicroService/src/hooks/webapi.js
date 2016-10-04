@@ -77,8 +77,8 @@ var getConfigJson = function (restApiDetails, callback) {
         } else if (req.apiType === constants.validate) {
             webConfig = webApiConfig.validationEndpoint;
         }
-        webConfig.headers.clientID = webApiConfig.clientID;
-        webConfig.headers.clientSecret = webApiConfig.clientSecret;
+        webConfig.headers.clientID = req.headers.clientid;
+        webConfig.headers.clientSecret = req.headers.clientsecret;
         //forming the inputObject for the next call
         webConfig.apiType = req.apiType;   // contains generate or validate
         webConfig.tokenDetails = restApiDetails.tokenDetails; // token details from the input JWT
