@@ -1,0 +1,8 @@
+{
+    "sendgrid": {
+        "accountSID": "r8skU2912a",
+        "authToken": "BPRV4rL9N7jM9272",
+        "toRecipient": "neethu.tthampi@cognizant.com",
+        "from": "SanthoshReddy.Tirumuru@cognizant.com"
+    }
+}

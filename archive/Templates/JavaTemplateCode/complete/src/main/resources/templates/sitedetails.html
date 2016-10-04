@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>User Details </title>
+		<style>
+p {
+    font-weight: bold;
+	color:#808000;
+	text-align: center;
+}
+</style>
+    </head>
+    <body style="background-color:powderblue;"> 
+    <h3 align="center">Log in Details</h3>    	
+         <p th:text="'AccessToken: ' + ${accessToken}" />
+         <p th:text="'Id:          ' + ${id}" />
+         <p th:text="'DisplayName: ' + ${displayName}" />
+         <p th:text="'Provider:    ' + ${provider}" />
+    </body>
+</html>

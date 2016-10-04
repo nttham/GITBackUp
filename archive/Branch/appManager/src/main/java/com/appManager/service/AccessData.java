@@ -1,0 +1,132 @@
+package com.appManager.service;
+
+import java.io.File;
+import java.util.ArrayList;
+
+import org.json.JSONObject;
+import org.springframework.stereotype.Service;
+
+import com.appManager.model.BluePrint;
+/**
+ *  Service + Data Access Layer.
+ */
+@Service
+public class AccessData {
+	
+	private BluePrint blueprint;
+	private String parentdirectory,runningapp,endpoint,host,appguid,domainguid;
+	private File servicefolderpath;
+	private ArrayList<String> downloadfolders;
+	private JSONObject hookObj,createservice,bindservice,env_json;
+   
+   
+	public String getDomainguid() {
+		return domainguid;
+	}
+
+	public void setDomainguid(String domainguid) {
+		this.domainguid = domainguid;
+	}
+
+	public JSONObject getEnv_json() {
+		return env_json;
+	}
+
+	public void setEnv_json(JSONObject env_json) {
+		this.env_json = env_json;
+	}
+
+	public String getAppguid() {
+		return appguid;
+	}
+
+	public void setAppguid(String appguid) {
+		this.appguid = appguid;
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
+	}
+
+	public String getEndpoint() {
+		return endpoint;
+	}
+
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
+	}
+
+	public JSONObject getCreateservice() {
+		return createservice;
+	}
+
+	public void setCreateservice(JSONObject createservice) {
+		
+		this.createservice =createservice;
+	}
+
+	public JSONObject getBindservice() {
+		return bindservice;
+	}
+
+	public void setBindservice(JSONObject bindservice) {
+		this.bindservice = bindservice;
+	}
+
+	public String getRunningapp() {
+		return runningapp;
+	}
+
+	public void setRunningapp(String runningapp) {
+		this.runningapp = runningapp;
+	}
+
+	public JSONObject getHookObj() {
+	return hookObj;
+}
+
+public void setHookObj(JSONObject hookObj) {
+	this.hookObj = hookObj;
+}
+
+	public BluePrint getBlueprint() {
+		return blueprint;
+	}
+
+	public void setBlueprint(BluePrint blueprint) {
+		this.blueprint = blueprint;
+	}
+
+	public String getParentdirectory() {
+		return parentdirectory;
+	}
+
+	public void setParentdirectory(String parentdirectory) {
+		this.parentdirectory = parentdirectory;
+	}
+
+	public File getServicefolderpath() {
+		return servicefolderpath;
+	}
+
+	public void setServicefolderpath(File servicefolderpath) {
+		this.servicefolderpath = servicefolderpath;
+	}
+
+	public ArrayList<String> getDownloadfolders() {
+		return downloadfolders;
+	}
+
+	public void setDownloadfolders(ArrayList<String> downloadfolders) {
+		this.downloadfolders = downloadfolders;
+	}
+
+
+
+	
+
+}

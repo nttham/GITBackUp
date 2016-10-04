@@ -1,0 +1,23 @@
+{
+  "username" : "admin",
+  "password" : "admin",
+  "host" : "54.208.194.189.xip.io",
+  "GITHUB_TOKEN" : "d5ca4ad4bf2dfcf8ea4fab73461ac3316e521431",
+  "gitUrl": "https://github.com/TheCognizantFoundry/Microservices.git",
+  "protocol":"http://",
+  "facebookCallback":"/auth/facebook/callback",
+  "twitterCallback":"/auth/twitter/callback",
+  "linkedinCallback":"/auth/linkedin/callback",
+  "googleCallback":"/auth/google/callback",
+  "microservicePath":"/Microservices/MicroServices/Authentication_MicroService",
+  "appZip":"application.zip",
+  "loginProtocol":"http://login.",
+  "loginPath":"/oauth/token?grant_type=password&username=",
+  "pass":"&password=",
+  "contentType":"application/json",
+  "charSet":"utf-8",
+  "authorization":"Basic Y2Y6",
+  "oAuthJson":"OAuth.json"
+  
+  
+}

@@ -1,0 +1,48 @@
+{
+  "credentials": {
+    "authUser": "admin",
+    "authPassword": "admin"
+  },
+  "catalog": {
+    "apiVersion": "2.4.0",
+    "defaultVersion": "1.0",
+    "name": "Logger",
+    "url": "auto",
+    "services": [
+      {
+        "id": "d7498a0c-6f30-4883-a4e5-39784e0c00c8",
+        "bindable": true,
+        "name": "Logger",
+        "version": "1.0",
+        "description": "Provides logger service instance Details",
+        "tags": [
+              "svc_offr_microService"
+        ],
+        "metadata": {
+          "providerDisplayName": "Logger Service",
+          "tags": [
+              "Logger Service",
+              "Logger"
+          ]
+        },
+        "plans": [
+          {
+            "name": "free",
+            "id": "439eef58-29bf-4bc5-9cf5-e189535d432d",
+            "description": "free",
+            "public": true,
+            "free": true
+          }
+        ]
+      }
+    ]
+  },
+  "plans": {
+    "439eef58-29bf-4bc5-9cf5-e189535d432d": {
+      "parameters": {
+        "key1": "value1",
+        "key2": "value2"
+      }
+    }
+  }
+}

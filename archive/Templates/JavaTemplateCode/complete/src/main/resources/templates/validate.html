@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Validate OTP </title>
+    </head>
+    <body style="background-color:powderblue;">      
+        
+        <form th:action="@{/validateotp}" method="post">
+            <div align="center"><label><b> OTP  :</b> <input type="text" name="otpcode"/> </label></div>
+             <input type="hidden" name="token" value="token" th:value="${token}"/>                
+                      
+           <p style="text-align:center;"><div align="center"><input type="submit" value="Verify"/></div></p>
+        </form>
+    </body>
+</html>

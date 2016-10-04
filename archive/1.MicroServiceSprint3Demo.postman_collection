@@ -1,0 +1,217 @@
+{
+	"variables": [],
+	"info": {
+		"name": "1.MicroServiceSprint3Demo",
+		"_postman_id": "baa8bdb4-c821-bee4-4fe9-a58c87e5b330",
+		"description": "OAuth Service with hooks (OTP,Twilio,Sendgrid,Logger)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. GET-TargetPAAS-Authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "//console.log(\"Authorizaton-\"+responseCode.code)\r\nif(responseCode.code == 202){\r\n    var data = JSON.parse(responseBody);\r\n    \r\n    if(data.token === undefined){\r\n        tests[\"Access token is not available\"] = false;\r\n    }else{\r\n        tests[\"Access token is available\"] = true;\r\n        postman.setEnvironmentVariable(\"targetpaas_access_token\", data.token); \r\n        postman.setEnvironmentVariable(\"targetpaas_space_guid\", data.space_guid);\r\n    }\r\n}else if(responseCode.code >= 400 && responseCode.code < 500){\r\n     var error = JSON.parse(responseBody);\r\n    tests[\"Authorizaton server error(\"+error.description+\")\"] = false; \r\n}else{\r\n    tests[\"Authorization server error\"] = false; \r\n}"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "sprint3",
+						"password": "sprint3",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "http://54.169.136.251:8080/appManager/app/paasauthenticate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic c3ByaW50MzpzcHJpbnQz",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"{{targetplatform_username}}\",\"password\":\"{{targetplatform_password}}\",\"platform\":\"{{target_platform}}\"}\n"
+				},
+				"description": "This is to fetch target PAAS authorization."
+			},
+			"response": []
+		},
+		{
+			"name": "2. POST-AppFactory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "//console.log(\"Authorizaton-\"+responseCode.code)\r\nif(responseCode.code == 200){\r\n    var data = JSON.parse(responseBody);\r\n    \r\n    if(data['App Url'] === undefined){\r\n        tests[\"App Url is not available\"] = false;\r\n    }else{\r\n        tests[\"App Urlis available\"] = true;\r\n        postman.setEnvironmentVariable(\"appurl\", data['App Url']); \r\n    }\r\n}else if(responseCode.code >= 400 && responseCode.code < 500){\r\n     var error = JSON.parse(responseBody);\r\n    tests[\"App Factory server error(\"+error.description+\")\"] = false; \r\n}else{\r\n    tests[\"App Factory server error\"] = false; \r\n}"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "sprint3",
+						"password": "sprint3",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "http://54.169.136.251:8080/appManager/app/appFactory",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic c3ByaW50MzpzcHJpbnQz",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"servicename\": \"Sprint3Demo\",\n  \"platform\": \"{{target_platform}}\",\n  \"accesstoken\": \"{{targetpaas_access_token}}\",\n  \"spaceguid\": \"{{targetpaas_space_guid}}\",\n  \"domainguid\": \"0f87ea0f-b95f-475d-b361-96dfd212add6\",\n  \"devlopergiturl\": \"https://github.com/sibabrata-acharya/test22.git\",\n  \"devlopergitusername\": \"sibabrata.acharya@cognizant.com\",\n  \"devlopergitpassword\": \"shiv223acharya\",\n  \"primaryservice\": {\n    \"providers\": {\n     \"facebook\": {\n        \"clientID\": \"{{facebook_clientid}}\",\n        \"clientSecret\": \"{{facebook_clientsecret}}\",\n        \"scope\":\"public_profile,email\"\n      },\n       \"google\": {\n        \"clientID\": \"{{google-clientid}}\",\n        \"clientSecret\": \"{{google-clientsecret}}\",\n        \"scope\":\"https://www.googleapis.com/auth/plus.login\"\n      },\n      \"linkedin\": {\n          \"clientID\": \"{{linkedin-clientid}}\",\n          \"clientSecret\": \"{{linkedin-clientsecret}}\"\n          \n      },\n    \"twitter\": {\n          \"clientID\": \"{{twitter-clientid}}\",\n          \"clientSecret\": \"{{twitter-clientsecret}}\"\n      }\n    },\n    \"protocol\": \"OAuth\",\n    \"appurl\": \"NodeJS/OauthTemplateApp\"\n  },\n  \"otherservices\": {\n    \"servicename\": \"Pushnotification\",\n    \"serviceid\": \"123456\"\n  }\n}"
+				},
+				"description": "This is to create and push app to the target paas"
+			},
+			"response": []
+		},
+		{
+			"name": "3. generateOTPviaTwilio",
+			"request": {
+				"url": "http://Sprint3Demoservice.54.208.194.189.xip.io/generate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"channel\": \"twilio\",\n  \"otp\": {\n    \"otpLength\": 5,\n    \"otpType\": \"numeric\",\n    \"otpExpiryTime\": 4\n  },\n  \"twilio\": {\n    \"accountSID\": \"AC728b20a72ea48a175a0cf47d11a6aa56\",\n    \"authToken\": \"1c84da28903505f762c727fe1bd65700\",\n    \"toRecipient\": \"+919539168770\",\n    \"fromNo\": \"+17758354685\"\n  }\n}"
+				},
+				"description": "generateOTPviaTwilio"
+			},
+			"response": []
+		},
+		{
+			"name": "4. validateOTP",
+			"request": {
+				"url": "http://Sprint3Demoservice.54.208.194.189.xip.io/validate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"otpCode\":\"14279\",\"otpKey\":\"50d3ac0d727a6b43e51408ead9f52ca63d1822349bf2fb95dd1e327f159b1b54\"}"
+				},
+				"description": "validateOTP"
+			},
+			"response": []
+		},
+		{
+			"name": "5. generateOTPviaSendgrid",
+			"request": {
+				"url": "http://Sprint3Demoservice.54.208.194.189.xip.io/generate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"channel\": \"sendgrid\",\n  \"otp\": {\n    \"otpLength\": 5,\n    \"otpType\": \"numeric\",\n    \"otpExpiryTime\": 4\n  },\n  \"sendgrid\": {\n    \"accountSID\": \"r8skU2912a\",\n    \"authToken\": \"BPRV4rL9N7jM9272\",\n    \"toRecipient\": \"passtestingcloud@gmail.com\",\n    \"fromMail\": \"demofaceit@gmail.com\"\n  }\n}"
+				},
+				"description": "generateOTPviaSendgrid"
+			},
+			"response": []
+		},
+		{
+			"name": "6. saveLog",
+			"request": {
+				"url": "http://Sprint3Demoservice.54.208.194.189.xip.io/saveLog",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"level\":\"INFO\",\"message\":\"Info message\", \"appid\":\"OneC\",\"priority\":\"Critical\"}"
+				},
+				"description": "saveLog"
+			},
+			"response": []
+		},
+		{
+			"name": "7. LogSaveToMongo",
+			"request": {
+				"url": "http://Sprint3Demoservice.54.208.194.189.xip.io/saveToMongo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"level\":\"INFO\",\"message\":\"Info message\", \"appid\":\"OneC\",\"priority\":\"Critical\"}"
+				},
+				"description": "LogSaveToMongo"
+			},
+			"response": []
+		},
+		{
+			"name": "8. searchLog",
+			"request": {
+				"url": "http://Sprint3Demoservice.54.208.194.189.xip.io/searchLog",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"level\":\"INFO\",\"appid\":\"OneC\",\"priority\":\"Critical\"}"
+				},
+				"description": "searchLog"
+			},
+			"response": []
+		}
+	]
+}

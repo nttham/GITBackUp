@@ -1,0 +1,33 @@
+!!! 5
+html
+    head
+        title= title
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/bootstrap.min.css', rel='stylesheet', media='screen')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js')
+        script(src='http://code.jquery.com/jquery.js')
+        script(src='js/bootstrap.min.js')
+    body
+        div
+            #providers.container
+                h3 This is a sample template application for Authentication service.
+                    br
+                    br
+                    p.lead For a selected provider this template application cannot proceed further if any prehooks or posthooks are enabled.
+                if config.facebook
+                    a(href='/authenticate?provider=facebook') Login via Facebook
+                    br
+                if config.twitter
+                    a(href='/authenticate?provider=twitter') Login via Twitter
+                    br
+                if config.google
+                    a(href='/authenticate?provider=google') Login via Google
+                    br
+                if config.linkedin
+                    a(href='/authenticate?provider=linkedin') Login via LinkedIn
+                    br
+                if config.custom
+                    a(href='/authenticate?provider=custom') Login via Custom OAuth
+                    br
+                if config.ldap
+                    a(href='/authenticate?provider=ldap') Login via LDAP

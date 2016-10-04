@@ -1,0 +1,53 @@
+!!! 5
+html
+    head
+        title= title
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/bootstrap.min.css', rel='stylesheet', media='screen')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js')
+        script(src='http://code.jquery.com/jquery.js')
+        script(src='js/bootstrap.min.js')
+        script.
+            $(document).ready(function (config) {
+                $("#profile").hide();
+                $("#authenticate").click(function () {
+                    var dn = $('input[name=dn]').val();
+                    var password = $('input[name=password]').val();
+                    $.ajax({
+                        url: '/ladp/authenticate',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {"dn": dn, "password": password},
+                        success: function (data) {
+                            //handle the returned data
+                            $("#profile").show();
+                            $("#validatediv").hide();
+                            $("#authenticate").hide();
+                            $("#authenticateLdap").hide();
+                        },
+                        error: function (err) {
+                            alert(JSON.stringify(err.responseJSON));
+                        }
+                    });
+                });
+            });
+    body
+    #profile.container
+        h1 You are logged in.
+        p.lead Successfully Authenticated via LDAP!
+        a(href='/login') Logout
+    #authenticateLdap.container
+        h3 Authentication through LDAP
+        #validatediv.container
+            input#inputdn(type='text', placeholder='dn', name='dn', required='required')
+            br
+            br
+            input#inputpwd(type='password', placeholder='password', name='password', required='required')
+            br
+            br
+            button#authenticate(type='submit') Login
+            br
+            br
+            a(href='/login') Go Home
+        br
+                          

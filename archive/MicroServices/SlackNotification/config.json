@@ -1,0 +1,18 @@
+{
+    "token":"xoxp-61766724487-61777461362-61794962354-537651351b",
+    "baseurl" : "https://slack.com/api/",
+    "testUrl":"api.test",
+    "testAuth":"auth.test",
+    "createChannel":"channels.create",
+    "archiveChannel":"channels.archive",
+    "channelsInvite":"channels.invite",
+    "channelsJoin":"channels.join",
+    "channelsLeave":"channels.leave",
+    "channelsUnarchive":"channels.unarchive",
+    "channelsInvite":"channels.invite",
+    "channelsJoin":"channels.join",
+    "channelsLeave":"channels.leave",
+    "channelsList":"channels.list",
+    "chatPostMessage":"chat.postMessage",
+    "searchMessages":"search.messages"
+}

@@ -1,0 +1,169 @@
+{
+  "error" : {
+
+    "msg_invalid_platform" 	: {
+      "code"    : 400,
+      "result" 	: "error",
+      "message"	: "Invalid Platform."
+
+    },
+
+
+    "msg_empty_token" 	: {
+      "code"    : 400,
+      "result" 	: "error",
+      "message"	: "deviceToken should not be an empty string."
+
+    },
+    "msg_invalid_blacklist" 	: {
+      "code"    : 400,
+      "result" 	: "error",
+      "message"	: "Invalid isBlackListed value."
+
+    },
+
+    "msg_invalid_param" 	: {
+      "code"    : 400,
+      "result" 	: "error",
+      "message"	: "Invalid request parameters."
+
+    },
+    "msg_deviceId_missing" 	: {
+      "code"    : 400,
+      "result" 	: "error",
+      "message"	: "deviceId parameter missing in body JSON for notification type 'device'."
+
+    },
+
+    "msg_channelName_missing" 	: {
+      "code"    : 400,
+      "result" 	: "error",
+      "message"	: "channelName parameter missing in body JSON for notification type 'channel'."
+
+    },
+
+    "msg_empty_param" 	: {
+      "code"    : 400,
+      "result"	:"error",
+      "message"	:"Parameters should not be empty."
+
+    },
+
+    "msg_reg_failure" 	: {
+      "code"    : 400,
+      "result"	:"error",
+      "message"	:"Registration failure."
+
+    },
+    "msg_invalid_templateId" : {
+      "code"    : 400,
+      "result"	:"error",
+      "message"	:"The given templateId is invalid."
+    },
+
+    "msg_reg_exists" 	: {
+      "code"    : 400,
+      "result"	:"error",
+      "message"	:"Device already registered with an another deviceToken/ Update is required with current deviceToken"
+
+    },
+
+    "msg_del_failure" : {
+      "code"    : 400,
+      "result" : "error",
+      "message" : "Unable to remove device/ Device not exists"
+
+    },
+    "msg_update_failure" : {
+      "code"    : 400,
+      "result" : "error",
+      "message" : "Unable to update device/ Device not exists"
+
+    },
+
+    "msg_send_failure" : {
+      "code"    : 400,
+      "result" : "error",
+      "message" : "Unable to send message"
+
+    },
+    "bulk_all_platforms_disabled" : {
+      "code"    : 400,
+      "result" : "error",
+      "message" : "All platforms are set to false"
+
+    },
+
+    "msg_no_devices_found" : {
+      "code"    : 404,
+      "result" : "error",
+      "message" : "No devices found"
+    },
+
+    "msg_dbservice_unavailable" : {
+      "code"    : 503,
+      "result" : "error",
+      "message" : "Service temporarily unavailable"
+    }
+
+  },
+
+  "success" : {
+
+    "msg_reg_success"	: {
+      "code"      : 200,
+      "result"	: "success",
+      "message"   : "Device successfully registered."
+
+    },
+    "msg_reg_already_success"	: {
+      "code"      : 200,
+      "result"	: "success",
+      "message"   : "Device already registered with provided deviceToken."
+
+    },
+
+    "msg_del_success"  : {
+      "code"      : 200,
+      "result" :  "success",
+      "message" : "Device successfully removed"
+
+    },
+
+    "msg_update_success"  : {
+      "code"      : 200,
+      "result" :  "success",
+      "message" : "Device successfully updated"
+
+    },
+
+    "msg_notify_success" 	: {
+      "code"      : 202,
+      "result" :  "success",
+      "message" : "Accepted the request to send message"
+
+    }
+  },
+
+  "instance_collection_name"  : "Instances",
+  "device_collection_name"    : "Devices",
+  "settings_collection_name"  : "Settings",
+  "channel_collection_name"   : "Channels",
+  "template_collection_name"  : "Templates",
+
+  "token":"xoxp-61766724487-61777461362-61794962354-537651351b",
+  "baseurl" : "https://slack.com/api/",
+  "testUrl":"api.test",
+  "testAuth":"auth.test",
+  "createChannel":"channels.create",
+  "archiveChannel":"channels.archive",
+  "channelsInvite":"channels.invite",
+  "channelsJoin":"channels.join",
+  "channelsLeave":"channels.leave",
+  "channelsUnarchive":"channels.unarchive",
+  "channelsList":"channels.list",
+  "chatPostMessage":"chat.postMessage",
+  "searchMessages":"search.messages"
+
+
+}

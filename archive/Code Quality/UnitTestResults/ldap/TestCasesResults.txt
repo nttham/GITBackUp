@@ -1,0 +1,29 @@
+$ ./../node_modules/.bin/istanbul cover ./../node_modules/.bin/_mocha ldapTest.js 
+Running on port :3000
+
+
+  LDAP Test Cases
+    Method POST /auth/ldap
+Response for /auth/ldap :  {"responseJson":{"nextCall":"/ldap","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE0NzIxMzAxMjd9.7nKUzUtkig28paHNbRxZDPNEAHDCqspH3Ok9JnZ9x0A"},"statusCode":303}
+::ffff:127.0.0.1 - - [Thu, 25 Aug 2016 13:02:07 GMT] "POST /auth/ldap HTTP/1.1" 200 145 "-" "node-superagent/2.2.0"
+Body after /auth/ldap API call : {"nextCall":"/ldap","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE0NzIxMzAxMjd9.7nKUzUtkig28paHNbRxZDPNEAHDCqspH3Ok9JnZ9x0A"}
+      ✓ should be able to initiate LDAP authentication (45ms)
+    Method POST /ldap
+::ffff:127.0.0.1 - - [Thu, 25 Aug 2016 13:02:07 GMT] "POST /ldap HTTP/1.1" 200 64 "-" "node-superagent/2.2.0"
+Body after LDAP authentication : {"message":"authentication successful","authFlag":true}
+      ✓ should be able to authenticate against configured LDAP server (520ms)
+
+
+  2 passing (2s)
+
+=============================================================================
+Writing coverage object [/Users/Santhosh/Desktop/santhosh/Auth_Microservice/ldap/Microservices-master/MicroServices/Authentication_MicroService/test/coverage/coverage.json]
+Writing coverage reports at [/Users/Santhosh/Desktop/santhosh/Auth_Microservice/ldap/Microservices-master/MicroServices/Authentication_MicroService/test/coverage]
+=============================================================================
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 33/33 )
+Branches     : 100% ( 0/0 )
+Functions    : 100% ( 9/9 )
+Lines        : 100% ( 33/33 )
+================================================================================

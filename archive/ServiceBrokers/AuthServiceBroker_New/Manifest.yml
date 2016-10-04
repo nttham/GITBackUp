@@ -1,0 +1,5 @@
+---
+applications:
+- name: AuthenticationBroker
+  memory: 128M
+  instances: 1

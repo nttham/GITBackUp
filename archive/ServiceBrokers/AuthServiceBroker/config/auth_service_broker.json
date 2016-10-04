@@ -1,0 +1,46 @@
+{
+  "credentials": {
+    "authUser": "Oauth",
+    "authPassword": "Oauth"
+  },
+  "catalog": {
+    "apiVersion": "2.4.0",
+    "defaultVersion": "1.0",
+    "name": "Authentication-Service-Broker",
+    "url": "auto",
+    "services": [
+      {
+        "id": "AuthenticationService",
+        "bindable": true,
+        "name": "AuthenticationService",
+        "version": "1.0",
+        "description": "Provides AuthService instance Details",
+        "metadata": {
+          "providerDisplayName": "OAuth",
+          "tags": [
+            "Oauth",
+            "auth-service",
+            "authentication-service"
+          ]
+        },
+        "plans": [
+          {
+            "name": "free",
+            "id": "authentication_plan",
+            "description": "free",
+            "public": true,
+            "free": true
+          }
+        ]
+      }
+    ]
+  },
+  "plans": {
+    "authentication_plan": {
+      "parameters": {
+        "key1": "value1",
+        "key2": "value2"
+      }
+    }
+  }
+}

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for test/ldapTest.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">test/</a> ldapTest.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>33/33</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>9/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>33/33</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+var should = chai.should();
+var expect = require('chai').expect;
+var server = require('../src/app.js');
+chai.use(chaiHttp);
+&nbsp;
+&nbsp;
+describe('LDAP Test Cases', function () {
+    //Make sure the env variables are set. config, apiKey and secretKey should be present in env
+    var apiKey = "75eb64c0-646e-11e6-b19a-e79951ac1354";
+    var dn = "cn=santhosh,dc=people,dc=cts";
+    var password = "password-1";
+    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYzViOTE1MWRmZTI1ZTllZTBhMTMyNDhjODBiNWNlMzAzMTllYTIyZGQwOTNkYmI1ZTFlYjE5NDNhNDc5YzNhZjdhYjYyZGVjMzRiNzc1YjgxMDFjOTYyOWJhOTAzZTg1Njk5ODZiZDcwMDZiZTFiYWMxOTQ5ZDE1YWMwMGRkZTRjNWQzN2U3MDgwODJjNGUwNDkxMjQ0ZjVhZjBiYTExMzUwM2EyNmJjOThiNGUxNmMzN2MyM2QzNzQwMzEzNjI3YTkxMjQ2NjUyZDQyMWUxMGNmMTIwMzI0NzMwNDkwN2M5MzNmZDk3ZmE1MzRlZDEyYWVjOGU4ZWZmZjM5NjJhMCIsImlhdCI6MTQ3MjEyODcxMH0.vqtxmUTCRZ-MhtIlZL6bBb0RmhMxY9TusUGDhNYNV84";
+    before(function (done) {
+        this.request = chai.request(server);
+        setTimeout(function () {
+            done();
+        }, 1000);
+    });
+&nbsp;
+    describe('Method POST /auth/ldap', function () {
+        it('should be able to initiate LDAP authentication', function (done) {
+            this.request.post("/auth/ldap")
+                .set('Accept', 'application/json')
+                .set('Content-Type', 'application/json')
+                .set('apikey',apiKey)
+                .end(function (err, res) {
+                    console.log("Body after /auth/ldap API call : "+JSON.stringify(res.body));
+                    res.should.have.status(200);
+                    res.body.should.have.property('nextCall');
+                    res.body.should.have.property('token');
+                    res.should.have.property('text');
+                    done();
+                });
+        });
+    });
+&nbsp;
+    describe('Method POST /ldap', function () {
+        it('should be able to authenticate against configured LDAP server', function (done) {
+            this.request.post("/ldap")
+                .set('Accept', 'application/json')
+                .set('Content-Type', 'application/json')
+                .set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYzViOTE1MWRmZTI1ZTllZTBhMTMyNDhjODBiNWNlMzAzMTllYTIyZGQwOTNkYmI1ZTFlYjE5NDNhNDc5YzNhZjdhYjYyZGVjMzRiNzc1YjgxMDFjOTYyOWJhOTAzZTg1Njk5ODZiZDcwMDZiZTFiYWMxOTQ5ZDE1YWMwMGRkZTRjNWQzN2U3MDgwODJjNGUwNDkxMjQ0ZjVhZjBiYTExMzUwM2EyNmJjOThiNGUxNmMzN2MyM2QzNzQwMzEzNjI3YTkxMjQ2NjUyZDQyMWUxMGNmMTIwMzI0NzMwNDkwN2M5MzNmZDk3ZmE1MzRlZDEyYWVjOGU4ZWZmZjM5NjJhMCIsImlhdCI6MTQ3MjEyODcxMH0.vqtxmUTCRZ-MhtIlZL6bBb0RmhMxY9TusUGDhNYNV84')
+                .set('dn',dn)
+                .set('password',password)
+                .end(function (err, res) {
+                    console.log("Body after LDAP authentication : "+JSON.stringify(res.body));
+                    res.should.have.status(200);
+                    res.body.should.have.property('message');
+                    res.body.should.have.property('authFlag');
+                    res.should.have.property('text');
+                    done();
+                });
+        });
+    });
+&nbsp;
+});</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 25 2016 18:32:01 GMT+0530 (IST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

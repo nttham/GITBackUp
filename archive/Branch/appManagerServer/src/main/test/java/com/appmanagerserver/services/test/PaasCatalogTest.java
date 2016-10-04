@@ -1,0 +1,76 @@
+package com.appmanagerserver.services.test;
+
+
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Test;
+
+import com.appmanagerserver.services.PaasCatalog;
+
+public class PaasCatalogTest {
+
+	@Test
+	public void getCatalogTest(){
+		
+	PaasCatalog paasCatalog= new PaasCatalog();
+    String x= paasCatalog.getCatalog("");
+	assertNotNull(x);
+	}
+
+	@Test
+	public void getCatalogForPlatformTest(){
+	PaasCatalog paasCatalog= new PaasCatalog();
+	String id="admin";
+	String platform="onec";
+    assertNotNull(paasCatalog.getCatalogForPlatform(id, platform)); 
+	}
+	
+	@Test
+	public void searchCatalogTest(){
+	PaasCatalog paasCatalog= new PaasCatalog();
+    assertNotNull(paasCatalog.searchCatalog("", ""));	
+	}
+	
+	@Test
+	public void autheticationCatalogTest(){
+	PaasCatalog paasCatalog= new PaasCatalog();
+    assertNotNull(paasCatalog.autheticationCatalog("", ""));
+	}
+	
+	@Test
+	public void getOrganisationsTest(){
+		PaasCatalog paasCatalog= new PaasCatalog();
+		String apiurl= "/v2/spaces/b169a527-a10a-4a84-a45a-2909fee6b1d9";
+		String token= "eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiIwZmU4MzEyOWYwZmY0NmU1YmE1ZjVhMDMyNzFmM2RjYyIsInN1YiI6ImM3NDQ4ZGZmLWRmZjktNGJmZC05MjYxLTdiMmI2YjE2OGVlMyIsInNjb3BlIjpbIm9wZW5pZCIsInNjaW0ucmVhZCIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iLCJ1YWEudXNlciIsInJvdXRpbmcucm91dGVyX2dyb3Vwcy5yZWFkIiwiY2xvdWRfY29udHJvbGxlci5yZWFkIiwicGFzc3dvcmQud3JpdGUiLCJjbG91ZF9jb250cm9sbGVyLndyaXRlIiwiZG9wcGxlci5maXJlaG9zZSIsInNjaW0ud3JpdGUiXSwiY2xpZW50X2lkIjoiY2YiLCJjaWQiOiJjZiIsImF6cCI6ImNmIiwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwidXNlcl9pZCI6ImM3NDQ4ZGZmLWRmZjktNGJmZC05MjYxLTdiMmI2YjE2OGVlMyIsIm9yaWdpbiI6InVhYSIsInVzZXJfbmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbiIsImF1dGhfdGltZSI6MTQ2ODMwMzc3OCwicmV2X3NpZyI6ImVlZjAzNDhjIiwiaWF0IjoxNDY4MzAzNzc4LCJleHAiOjE0NjgzMDQzNzgsImlzcyI6Imh0dHBzOi8vdWFhLjU0LjIwOC4xOTQuMTg5LnhpcC5pby9vYXV0aC90b2tlbiIsInppZCI6InVhYSIsImF1ZCI6WyJjZiIsIm9wZW5pZCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIiwidWFhIiwicm91dGluZy5yb3V0ZXJfZ3JvdXBzIiwicGFzc3dvcmQiLCJkb3BwbGVyIl19.fOUwpHi3VsEu-SPWBGZsDiEzaRdqtL9hOTAw0ghkylkJFmbwIYpc38Y4G1rLm9m8TOnMSk7V0oZcRo5BAjEuUDcp9b9VIX_sCC74rVBnb6CVSywjx39iB66Fz2wQviemuFH2DQ6BX8CP81HlWbhPmOQkeytbX2Fp5mmIeL2_0UA";
+		assertNotNull(paasCatalog.getOrganisations(token, apiurl));
+	}
+	
+	@Test
+	public void getRegionsTest(){
+		PaasCatalog paasCatalog= new PaasCatalog();
+		assertNotNull(paasCatalog.getRegions(""));
+	}
+	
+	@Test
+	public void getSpaceTest(){
+		PaasCatalog paasCatalog= new PaasCatalog();
+		
+		String apiurl= "/v2/spaces/b169a527-a10a-4a84-a45a-2909fee6b1d9";
+		String token= "eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiIwZmU4MzEyOWYwZmY0NmU1YmE1ZjVhMDMyNzFmM2RjYyIsInN1YiI6ImM3NDQ4ZGZmLWRmZjktNGJmZC05MjYxLTdiMmI2YjE2OGVlMyIsInNjb3BlIjpbIm9wZW5pZCIsInNjaW0ucmVhZCIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iLCJ1YWEudXNlciIsInJvdXRpbmcucm91dGVyX2dyb3Vwcy5yZWFkIiwiY2xvdWRfY29udHJvbGxlci5yZWFkIiwicGFzc3dvcmQud3JpdGUiLCJjbG91ZF9jb250cm9sbGVyLndyaXRlIiwiZG9wcGxlci5maXJlaG9zZSIsInNjaW0ud3JpdGUiXSwiY2xpZW50X2lkIjoiY2YiLCJjaWQiOiJjZiIsImF6cCI6ImNmIiwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwidXNlcl9pZCI6ImM3NDQ4ZGZmLWRmZjktNGJmZC05MjYxLTdiMmI2YjE2OGVlMyIsIm9yaWdpbiI6InVhYSIsInVzZXJfbmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbiIsImF1dGhfdGltZSI6MTQ2ODMwMzc3OCwicmV2X3NpZyI6ImVlZjAzNDhjIiwiaWF0IjoxNDY4MzAzNzc4LCJleHAiOjE0NjgzMDQzNzgsImlzcyI6Imh0dHBzOi8vdWFhLjU0LjIwOC4xOTQuMTg5LnhpcC5pby9vYXV0aC90b2tlbiIsInppZCI6InVhYSIsImF1ZCI6WyJjZiIsIm9wZW5pZCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIiwidWFhIiwicm91dGluZy5yb3V0ZXJfZ3JvdXBzIiwicGFzc3dvcmQiLCJkb3BwbGVyIl19.fOUwpHi3VsEu-SPWBGZsDiEzaRdqtL9hOTAw0ghkylkJFmbwIYpc38Y4G1rLm9m8TOnMSk7V0oZcRo5BAjEuUDcp9b9VIX_sCC74rVBnb6CVSywjx39iB66Fz2wQviemuFH2DQ6BX8CP81HlWbhPmOQkeytbX2Fp5mmIeL2_0UA";
+
+assertNotNull(paasCatalog.getSpace(token, apiurl));
+}
+
+	@Test
+	public void checkAppNameTest(){
+		PaasCatalog paasCatalog= new PaasCatalog();
+		
+		String token= "eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiIwZmU4MzEyOWYwZmY0NmU1YmE1ZjVhMDMyNzFmM2RjYyIsInN1YiI6ImM3NDQ4ZGZmLWRmZjktNGJmZC05MjYxLTdiMmI2YjE2OGVlMyIsInNjb3BlIjpbIm9wZW5pZCIsInNjaW0ucmVhZCIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iLCJ1YWEudXNlciIsInJvdXRpbmcucm91dGVyX2dyb3Vwcy5yZWFkIiwiY2xvdWRfY29udHJvbGxlci5yZWFkIiwicGFzc3dvcmQud3JpdGUiLCJjbG91ZF9jb250cm9sbGVyLndyaXRlIiwiZG9wcGxlci5maXJlaG9zZSIsInNjaW0ud3JpdGUiXSwiY2xpZW50X2lkIjoiY2YiLCJjaWQiOiJjZiIsImF6cCI6ImNmIiwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwidXNlcl9pZCI6ImM3NDQ4ZGZmLWRmZjktNGJmZC05MjYxLTdiMmI2YjE2OGVlMyIsIm9yaWdpbiI6InVhYSIsInVzZXJfbmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbiIsImF1dGhfdGltZSI6MTQ2ODMwMzc3OCwicmV2X3NpZyI6ImVlZjAzNDhjIiwiaWF0IjoxNDY4MzAzNzc4LCJleHAiOjE0NjgzMDQzNzgsImlzcyI6Imh0dHBzOi8vdWFhLjU0LjIwOC4xOTQuMTg5LnhpcC5pby9vYXV0aC90b2tlbiIsInppZCI6InVhYSIsImF1ZCI6WyJjZiIsIm9wZW5pZCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIiwidWFhIiwicm91dGluZy5yb3V0ZXJfZ3JvdXBzIiwicGFzc3dvcmQiLCJkb3BwbGVyIl19.fOUwpHi3VsEu-SPWBGZsDiEzaRdqtL9hOTAw0ghkylkJFmbwIYpc38Y4G1rLm9m8TOnMSk7V0oZcRo5BAjEuUDcp9b9VIX_sCC74rVBnb6CVSywjx39iB66Fz2wQviemuFH2DQ6BX8CP81HlWbhPmOQkeytbX2Fp5mmIeL2_0UA";
+		String apiurl= "/v2/spaces/b169a527-a10a-4a84-a45a-2909fee6b1d9";
+        String spaceguid=  "b169a527-a10a-4a84-a45a-2909fee6b1d9";
+        String appname= "appManagerServer";
+		
+		assertNotNull(paasCatalog.checkAppName(token, apiurl, spaceguid, appname));
+	}
+	
+}

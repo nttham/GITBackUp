@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DashBoard Cloud</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="registerapps.json"></script>
+<script type="text/javascript">
+
+
+function loadRegisterApps(){
+	
+	var registerappsJSON = JSON.parse(registerapps);
+	var sourceout = "",processorout="",sinkout="";
+    var i;
+    var pmml_inputs='Sepal.Length=payload.sepalLength,Sepal.Width=payload.sepalWidth,Petal.Length=payload.petalLength,Petal.Width=payload.petalWidth';
+    var pmml_outputs='Predicted_Species=payload.predictedSpecies';
+    document.getElementById("txt_processor_Inputs").value=pmml_inputs;
+    document.getElementById("txt_processor_Outputs").value=pmml_outputs;
+    
+    
+    for(i = 0; i < registerappsJSON.length; i++) {
+    	
+    	if(registerappsJSON[i].type=="source"){
+    		sourceout += '<option value="' + registerappsJSON[i].name + '">' + 
+            registerappsJSON[i].name + '</a><br>';
+    	}
+    	else if(registerappsJSON[i].type=="processor")
+    	{
+    		processorout += '<option value="' + registerappsJSON[i].name + '">' + 
+            registerappsJSON[i].name + '</a><br>';
+    	}
+    	else if(registerappsJSON[i].type=="sink")
+    	{
+    		sinkout += '<option value="' + registerappsJSON[i].name + '">' + 
+            registerappsJSON[i].name + '</a><br>';
+    	}	
+    	
+    }
+    
+	document.getElementById("drp_source").innerHTML = sourceout;
+	document.getElementById("drp_processor").innerHTML = processorout;
+	document.getElementById("drp_sink").innerHTML = sinkout;
+    
+	
+}
+
+
+function choosesource(element) {
+	
+	if(element.id=="drp_source"){
+		document.getElementById("txt_source").value=document.getElementById("txt_source").value+element.value;
+	}
+	else if(element.id=="drp_processor"){
+		document.getElementById("txt_processor").value=document.getElementById("txt_processor").value+element.value;
+	}
+	else if(element.id=="drp_sink"){
+		document.getElementById("txt_sink").value=document.getElementById("txt_sink").value+element.value;
+	}
+}
+
+
+function createStream() {
+	
+/* 	var dataflowServerUrl="http://localhost:9393/"; 
+	var definition="http | log";
+	var deploy="true";
+	var name=document.getElementById("txt_stream_name").value;
+	var postdata='definition='+definition+'&deploy='+deploy+'&name='+name;
+	 */
+	 		
+	 		var master="",header="",stream_name="";
+	 		var source_type="",source_attr="",source_label="",source_pattern="",source_port="";
+	 		var processor_type="",processor_attr="",processor_label="",processor_inputs="",processor_model_location="",processor_model_name="",
+	 		processor_model_name_expression="",processor_outputs="",processor_inputtype="",processor_outputtype="";
+	 		var sink_type="",sink_attr="",sink_label="",sink_expression="",sink_level="",sink_name="";
+	 		var footer="",deploy="";
+	 		
+	 		stream_name=document.getElementById("txt_stream_name").value;
+	 		source_type=document.getElementById("txt_source").value;
+	 		source_label=document.getElementById("txt_source_label").value;
+	 		source_pattern=document.getElementById("txt_source_pattern").value;
+	 		source_port=document.getElementById("txt_source_port").value;
+	 		
+	 		processor_type=document.getElementById("txt_processor").value;
+	 		processor_label=document.getElementById("txt_processor_label").value;
+	 		processor_inputs=document.getElementById("txt_processor_Inputs").value;
+	 		processor_model_location=document.getElementById("txt_processor_Model_location").value;
+	 		processor_model_name=document.getElementById("txt_processor_Model_name").value;
+	 		processor_model_name_expression=document.getElementById("txt_processor_Model_name_expression").value;
+	 		processor_outputs=document.getElementById("txt_processor_Outputs").value;
+	 		processor_inputtype=document.getElementById("txt_processor_inputType").value;
+	 		processor_outputtype=document.getElementById("txt_processor_outputType").value;
+
+	 		sink_type=document.getElementById("txt_sink").value;
+	 		sink_label=document.getElementById("txt_sink_label").value;
+	 		sink_expression=document.getElementById("txt__sink_expression").value;
+	 		sink_level=document.getElementById("txt_sink_level").value;
+	 		sink_name=document.getElementById("txt_sink_name").value;
+	 	      
+	 		deploy=document.getElementById("chk_deploy").checked;
+	 		
+	 		header="{"+
+ 					'"request": { '+
+ 					'"streamname": "'+stream_name+'",';
+	 	  
+	 		
+/* 	 		source_attr=' "source": { 	'+
+ 			' "type": "'+source_type+'",'+
+ 			' "attributes": [{			'+
+ 			'	"key": "label",		'+
+ 			'	"value": "'+source_label+'"'+
+ 			'   }, {					'+
+ 			'	"key": "pattern",	'+
+	 		'   "value": "'+source_pattern+'"'+
+	 		'   }, {					'+
+	 		'	"key": "port",		'+
+	 		'   "value": "'+source_port+'"'+ 				
+ 			'	}]'+
+ 			'},'; */
+ 			
+ 			
+	 			
+	     	source_attr=' "source":{'+
+	 			'"type": "'+source_type+'",'+
+	 			'"attributes": [{'+
+		 		'"key":"port",		'+
+		 		'"value":"'+source_port+'"'+ 				
+	 			'}]'+
+	 			'},';
+	       	 
+/* 		 		processor_attr=' "processor": { 	'+
+	 			' "type": "'+processor_type+'",'+
+	 			' "attributes": [{			'+
+	 			'	"key": "label",		'+
+	 			'	"value": "'+processor_label+'"'+
+	 			'   }, {					'+
+	 			'	"key": "inputs",	'+
+		 		'   "value": "'+processor_inputs+'"'+
+		 		'   }, {					'+
+		 		'	"key": "model-location",'+
+		 		'   "value": "'+processor_model_location+'"'+ 
+		 		'   }, {					'+
+		 		'	"key": "model-name",'+
+		 		'   "value": "'+processor_model_name+'"'+ 
+		 		'   }, {					'+
+		 		'	"key": "model-name-expression",'+
+		 		'   "value": "'+processor_model_name_expression+'"'+ 
+		 		'   }, {					'+
+		 		'	"key": "outputs",'+
+		 		'   "value": "'+processor_outputs+'"'+ 
+		 		'   }, {					'+
+		 		'	"key": "inputtype",'+
+		 		'   "value": "'+processor_inputtype+'"'+ 
+		 		'   }, {					'+
+		 		'	"key": "outputtype",'+
+		 		'   "value": "'+processor_outputtype+'"'+ 
+	 			'	}]'+
+	 			'},'; */
+	 			
+	 		processor_attr=' "processor": {'+
+		 			'"type": "'+processor_type+'",'+
+		 			'"attributes":[{'+
+		 			'"key": "label",'+
+		 			'"value": "'+processor_label+'"'+
+		 			'},{'+
+		 			'"key": "inputs",'+
+			 		'"value": "'+processor_inputs+'"'+
+			 		'},{'+
+			 		'"key":"modelLocation",'+
+			 		'"value": "'+processor_model_location+'"'+ 
+			 		'},{					'+
+			 		'"key":"outputs",'+
+			 		'"value": "'+processor_outputs+'"'+ 
+			 		'},{'+
+			 		'"key": "inputtype",'+
+			 		'"value":"'+processor_inputtype+'"'+ 
+			 		'},{'+
+			 		'"key":"outputtype",'+
+			 		'"value": "'+processor_outputtype+'"'+ 
+		 			'}]'+
+		 			'},';
+	 			
+/* 		 		 	sink_attr=' "sink": { 	'+
+		 			' "type": "'+sink_type+'",'+
+		 			' "attributes": [{			'+
+		 			'	"key": "label",		'+
+		 			'	"value": "'+sink_label+'"'+
+		 			'   }, {					'+
+		 			'	"key": "expression",	'+
+			 		'   "value": "'+sink_expression+'"'+
+			 		'   }, {					'+
+			 		'	"key": "level",		'+
+			 		'   "value": "'+sink_level+'"'+ 	
+			 		'   }, {					'+
+			 		'	"key": "name",		'+
+			 		'   "value": "'+sink_name+'"'+ 	
+		 			'	}]'+
+		 			'},'; */
+		 			
+		 	sink_attr='"sink":{'+
+		 			'"type": "'+sink_type+'",'+
+		 			'"attributes": [{'+
+		 			'"key": "label",'+
+		 			'"value": "'+sink_label+'"'+
+		 			'}]'+
+		 			'},';
+		       	 
+	       	 
+			footer='"tapstreamname":"file-content","deploy":"'+deploy+'"'+
+		 	'}'+
+		 	'}';		 			
+		 			
+
+		 	master=header
+					 	+source_attr
+					 	+processor_attr
+					 	+sink_attr
+		 		+footer;
+		 	
+		 	console.log(master);
+		 	
+		 	/*
+	        var xhttp = new XMLHttpRequest();
+	        	  xhttp.onreadystatechange = function() {
+	        	       alert("response111"+xhttp.responseText);	        		  
+	        	    if (xhttp.readyState == 4 && xhttp.status == 200) {
+	        	       alert("response"+xhttp.responseText);
+	        	    }
+	        	    
+	        	  };
+	        	  xhttp.open("POST",dataflowServerUrl+'/streams/definitions', true);
+	        	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	        	  xhttp.send(postdata);
+	        	  */
+	        	  
+	        var dataflowServerUrl="http://localhost:8080/"; 
+	        var xhttp = new XMLHttpRequest();
+	        	  xhttp.onreadystatechange = function() {
+	        	    if (xhttp.readyState == 4 && xhttp.status == 200) {
+	        	       //alert("response222"+xhttp.responseText);
+	        	       alert("Stream Created and Deployed Sucessfully!");
+	        	       window.location.href = 'http://localhost:9393/dashboard/';
+	        	    }
+	        	    
+	        	  };
+	        	  xhttp.open("POST",dataflowServerUrl+'deploy', true);
+	        	  xhttp.setRequestHeader("Content-type", "application/json");
+	        	  xhttp.send(master);
+	        	  
+
+	        
+}
+
+</script> 
+
+
+<body onload="loadRegisterApps();">
+
+<div id="id01" class="modal">
+  <h1>STREAM DEPLOY</h1>
+  <form class="modal-content animate" action="#">
+    <div style="background-color:white;">
+      <table style="background-color:wheat;">
+      <tbody>
+      <tr style="background: lightblue;">
+      <td>
+      <label><b>Source</b></label>
+      </td>
+      <td>
+      <select id="drp_source" name="name_source" multiple="multiple" onchange="choosesource(this)">
+      </select>
+       </td>
+       <td>
+      	<table>
+      		<tr>
+      			<td></td>
+      			<td><input type="text" placeholder="Enter Source" id="txt_source" required/></td>
+      		</tr>
+      			<tr>
+      			<td><label><b>Port</b></label></td>
+      			<td><input type="text" placeholder="Enter Port" id="txt_source_port" value="9001" required/></td>
+      		</tr>
+      		  <tr style="visibility: hidden;">
+      			<td><label><b>Label</b></label></td>
+      			<td><input type="text" placeholder="Enter Label" id="txt_source_label" value="http" required/></td>
+      		</tr>
+      		  <tr style="visibility: hidden;">
+      			<td><label><b>Pattern</b></label></td>
+      			<td><input type="text" placeholder="Enter Pattern" id="txt_source_pattern" required/></td>
+      		</tr>
+      	</table>
+      </td>
+      </tr>
+      <tr>
+      <td></td>
+      <td></td>
+      <td><hr></td>
+      </tr>
+	  <tr>
+	   <td>
+      <label><b>Proessor</b></label>
+      </td>
+      <td>
+      <select id="drp_processor" name="name_processor" multiple="multiple" onchange="choosesource(this)">
+      </select>
+      </td>
+       <td>
+       		  <table>
+	       		  <tr>
+	       		  	<td></td>
+	       		  	<td> <input type="text" placeholder="Enter Processor" id="txt_processor"/></td>
+	       		  </tr>
+	       		  <tr>
+	       		  	<td><label><b>Label</b></label></td>
+	       		  	<td><input type="text" placeholder="Enter Label" id="txt_processor_label" value="pmml" required/></td>
+	       		  </tr>
+	       		  <tr>
+	       		  	<td><label><b>Inputs</b></label></td>
+	       		  	<td><input type="text" placeholder="Enter Inputs" id="txt_processor_Inputs" required/></td>
+	       		  </tr>       		  
+ 	       		  <tr>
+	       		  	<td><label><b>Model-location</b></label></td>
+	       		  	<!-- <td><input type="text" placeholder="Enter Model-location" id="txt_processor_Model_location"  value="https://raw.githubusercontent.com/spring-cloud/spring-cloud-stream-modules/master/pmml-processor/src/test/resources/iris-flower-classification-naive-bayes-1.pmml.xml"  required/></td> -->
+	       		  	<td><input type="text" placeholder="Enter Model-location" id="txt_processor_Model_location"  value="file:///D:/SCDFSoftWares/iris-flower-classification-naive-bayes-1.pmml.xml"  required/></td>
+	       		  </tr>      	
+ 				  <tr>
+	       		  	<td><label><b>Outputs</b></label></td>
+	       		  	<td><input type="text" placeholder="Enter Outputs" id="txt_processor_Outputs" required/></td>
+	       		  	  <!-- <br><label><b>Model-location</b></label><input type="file" placeholder="Enter Model-location" id="txt_processor_Model_location"  value="https://raw.githubusercontent.com/spring-cloud/spring-cloud-stream-modules/master/pmml-processor/src/test/resources/iris-flower-classification-naive-bayes-1.pmml.xml"  required/> -->
+	       		  </tr> 	
+	       		   <tr>
+	       		  	<td><label><b>InputsType</b></label></td>
+	       		  	<td><input type="text" placeholder="Enter inputsType" id="txt_processor_inputType" value="application/x-spring-tuple" required/></td>
+	       		  </tr> 
+	       		   <tr>
+	       		  	<td><label><b>OutputType</b></label></td>
+	       		  	<td><input type="text" placeholder="Enter outputType" id="txt_processor_outputType" value="application/json" required/></td>
+	       		  </tr> 
+	       		   <tr style="visibility: hidden;">
+	       		  	<td><label><b>Model-name</b></label></td>
+	       		  	<td><input type="text" placeholder="Enter Model-name" id="txt_processor_Model_name" value="http" /></td>
+	       		  </tr>    
+ 				  <tr style="visibility: hidden;">
+	       		  	<td><label><b>Model-name-expression</b></label></td>
+	       		  	<td><input type="text" placeholder="Enter Pattern" id="txt_processor_Model_name_expression" /></td>
+	       		  </tr>       		  	       		     		  
+		      </table>
+      </td>
+       </tr>
+       <tr>
+      <td></td>
+      <td></td>
+      <td><hr></td>
+      </tr>
+      
+       
+      <tr  style="background: lightyellow;">
+       <td>
+       <label><b>Sync</b></label>
+       </td>
+       <td>
+      <select id="drp_sink" name="name_sink" multiple="multiple" onchange="choosesource(this)">
+      </select>
+      </td>
+       <td>
+	      <table>
+	      		<tr>
+	      			<td></td>
+	      			<td>  <input type="text" placeholder="Enter Sink" id="txt_sink" required/></td>
+	      		</tr>
+	      		<tr>
+	      			<td><label><b>Label</b></label></td>
+	      			<td><input type="text" placeholder="Enter Label" id="txt_sink_label" value="log" required/></td>
+	      		</tr>
+	      		 <tr style="visibility: hidden;">
+	      			<td><label><b>Expression</b></label></td>
+	      			<td><input type="text" placeholder="Enter Expression" id="txt__sink_expression" required/></td>
+	      		</tr>
+	      		 <tr style="visibility: hidden;">
+	      			<td><label><b>Level</b></label></td>
+	      			<td><input type="text" placeholder="Enter Level" id="txt_sink_level" required/></td>
+	      		</tr>
+	      		 <tr style="visibility: hidden;">
+	      			<td><label><b>Name________________</b></label></td>
+	      			<td><input type="text" placeholder="Enter Name" id="txt_sink_name" required/></td>
+	      		</tr>
+	      </table>
+      </td>
+       </tr>
+        <tr>
+      <td></td>
+      <td></td>
+      <td><hr></td>
+      </tr>
+      
+      <tr>
+      <td>
+      <label><b>Stream Name</b></label>
+      </td>
+      <td>
+      <input type="text" placeholder="Enter Stream Name" id="txt_stream_name" required/>
+      </td>
+      <td>
+      <input type="checkbox" checked="checked"  id="chk_deploy"> Deploy
+      </td>
+      </tr>
+      
+	 <tr>
+      <td>
+         <button type="submit" onclick="createStream();">Create Stream</button>
+         <button type="reset">Clear</button>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      </tr> 
+      
+      
+      </tbody>
+      </table>
+    </div>
+  </form>
+</div>
+
+
+</body>
+</html>

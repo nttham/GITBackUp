@@ -1,0 +1,5 @@
+---
+applications:
+- name: slack
+  memory: 250MB
+  instances: 1

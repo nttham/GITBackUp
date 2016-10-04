@@ -1,0 +1,19 @@
+{
+  "name": "PaaS-Catalog",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~4.13.1",
+    "async" : "*",
+    "request" : "*",
+    "hashmap" : "*",
+    "chai" : "*",
+    "chai-http" : "*",
+    "mocha": ">= 0.9.0",
+    "istanbul" : "*"
+  }
+}
+

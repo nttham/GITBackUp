@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Channels/pushDBConnection.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">Channels/</a> pushDBConnection.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.63% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>80/98</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">63.04% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>29/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>23/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.63% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>80/98</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Created by Srividya on 13/07/16.
+ */
+//Importing required node modules
+var MongoClient = require('mongodb').MongoClient;
+&nbsp;
+//Requiring the config.json file where we have all the required configurations.
+var configVals = require('./config.json');
+&nbsp;
+var async = require('async');
+&nbsp;
+var request = require('request');
+&nbsp;
+//This api will be used to createchannel based on the user provided channel name
+exports.createCollectionMethod = function (collectionName,callback) {
+&nbsp;
+    // Connect to the db.
+    //Parameters: configVals.mongoDBPath is the url of mongodb.
+    MongoClient.connect(configVals.mongoDBPath, {auth:{authdb:'admin'}}, function(err, db) {
+        //On connecting the DB if any error occurs, it will return the err.
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(err) {
+<span class="cstat-no" title="statement not covered" >            return callback(err);</span>
+        }
+&nbsp;
+        //create a collection based on the given channel name.
+        //collection name is equivalent to channel name.
+        db.createCollection(collectionName, {strict:true}, function(err, collection) {
+            //On creating the collection if any error occurs, it will return the err and close the db
+            if(err) {
+                //Closing the DB connection is error occurs.
+                db.close();
+                return callback({"message":err.message});
+            }
+            //Closing the DB connection on success.
+            db.close();
+            //Once collection is created will return the success message as callback
+            return callback(null,collection);
+        });
+&nbsp;
+    });
+};
+&nbsp;
+//This api will be used to deletechannel based on the user provided channel name
+exports.deleteCollectionMethod = function (collectionName,callback) {
+    // Connect to the db
+    MongoClient.connect(configVals.mongoDBPath, {auth:{authdb:'admin'}}, function(err, db) {
+        //On connecting the DB if any error occurs, it will return the err.
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(err) {
+<span class="cstat-no" title="statement not covered" >            return callback(err);</span>
+        }
+        //delete a collection based on the given channel name.
+        //collection name is equivalent to channel name.
+        db.collection(collectionName).drop( function(err, response) {
+            //On deleting the collection if any error occurs, it will return the err as callback and close the db
+            if(err) {
+                db.close();
+                //checking error code for the channel name.
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (err.code === 26) {
+                    return callback({"message":"Kindly provide proper channel name to delete."});
+                }
+                else {
+<span class="cstat-no" title="statement not covered" >                    return callback({"message":err.message,"code":err.code});</span>
+                }
+            }
+            //Closing the DB connection on success.
+            db.close();
+            //Once collection is deleted will return the success message as callback.
+            return callback(null,response);
+        });
+    });
+};
+&nbsp;
+//This api will be used to subscribe to channel based on the user provided channel name
+exports.subscribeToChannel = function (request,callback) {
+    // Connect to the db
+    MongoClient.connect(configVals.mongoDBPath, {auth:{authdb:'admin'}}, function(err, db) {
+        //On connecting the DB if any error occurs, it will return the err.
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(err) {
+<span class="cstat-no" title="statement not covered" >            return callback(err);</span>
+        }
+&nbsp;
+        //list all the collections present in the DB and
+        //check for the existence of collection based on channelname provided.
+        //If error it will return the error as callback
+        db.listCollections({name: request.headers.channelname})
+            .next(function(err, collinfo) {
+                //If provided channel is exists as a collection in db, will insert the provided deviceID as _id to the collection.
+                if (collinfo) {
+                    var document = {_id:request.headers.deviceid};//This id will be the device id of user.
+                    db.collection(request.headers.channelname).insertOne(document,{strict:true}, function(err, response) {
+                        if(err) {
+                            //Closing the DB connection on error.
+                            db.close();
+                            //checking error code for the deviceID. If it is exists returning the error as a callback.
+                            <span class="missing-if-branch" title="else path not taken" >E</span>if (err.code === 11000) {
+                                return callback({"message":"This device is already subscribed to the channel: "+request.headers.channelname});
+                            }
+                            else {
+<span class="cstat-no" title="statement not covered" >                                return callback({"message":err.message,"code":err.code});</span>
+                            }
+                        }
+                        //Closing the DB connection on success.
+                        db.close();
+                        //On successful subscribe returning the success message as callback.
+                        return callback(null,response);
+                    });
+                }
+                else {
+                    //Closing the DB connection on error.
+                    db.close();
+                    //If provided channel name is not exists returning the callback as error.
+                    return callback({"message":"Kindly provide the proper channel name to subscribe"});
+                }
+            });
+    });
+};
+&nbsp;
+//This api will be used to unsubscribe from channel based on the user provided channel name
+exports.unSubscribeToChannel = function (request,callback) {
+    // Connect to the db
+    MongoClient.connect(configVals.mongoDBPath, {auth:{authdb:'admin'}}, function(err, db) {
+        //On connecting the DB if any error occurs, it will return the err as callback.
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(err) {
+<span class="cstat-no" title="statement not covered" >            return callback(err);</span>
+        }
+&nbsp;
+        //list all the collections present in the DB and
+        //check for the existence of collection based on channelname provided.
+        //If error it will return the error as callback
+        db.listCollections({name: request.headers.channelname})
+            .next(function(err, collinfo) {
+                //If provided channel is exists as a collection in db, will delete the provided deviceID as _id to the collection.
+                if (collinfo) {
+                    var document = {_id:request.headers.deviceid};//This id will be the device id of user.
+                    db.collection(request.headers.channelname).deleteOne(document, function(err, response) {
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if(err) {
+                            //Closing the DB connection on error.
+<span class="cstat-no" title="statement not covered" >                            db.close();</span>
+                            //checking error code for the deviceID. If it is not exists returning the error as a callback.
+<span class="cstat-no" title="statement not covered" >                            if (err.code === 11000) {</span>
+<span class="cstat-no" title="statement not covered" >                                return callback({"message":"This device is already unsubscribed from the channel: "+request.headers.channelname});</span>
+                            }
+                            else {
+<span class="cstat-no" title="statement not covered" >                                return callback({"message":err.message,"code":err.code});</span>
+                            }
+                        }
+                        //Closing the DB connection on success.
+                        db.close();
+                        //checking error code for the deviceID. If it is not exists returning the error as a callback.
+                        if (response.deletedCount === 0) {
+                            return callback({"message":"This device is already unsubscribed from the channel: "+request.headers.channelname});
+                        }
+                        else {
+                            //On successful subscribe returning the success message as callback.
+                            return callback(null,response);
+                        }
+                    });
+                }
+                else {
+                    //Closing the DB connection on error.
+                    db.close();
+                    //If provided channel name is not exists returning the callback as error.
+                    return callback({"message":"Kindly provide the proper channel name to unsubscribe"});
+                }
+            });
+    });
+};
+&nbsp;
+&nbsp;
+//This api will be used to notification to a channel based on channel name provided
+exports.pushNotifyToChannel = function (requestObj,callback) {
+&nbsp;
+    //This is to get the deviceID's from DB based on the channelname provided in body.
+    var getDeviceIDS = function (deviceIDSCallback) {
+        // Connect to the db
+        MongoClient.connect(configVals.mongoDBPath, {auth:{authdb:'admin'}}, function(err, db) {
+            //On connecting the DB if any error occurs, it will return the err as callback.
+            <span class="missing-if-branch" title="if path not taken" >I</span>if(err) {
+<span class="cstat-no" title="statement not covered" >                return deviceIDSCallback(err);</span>
+            }
+&nbsp;
+            //list all the collections present in the DB and
+            //return the all the objects of that collection based on channel name as an array format.
+            //If error it will return the error as callback
+            db.listCollections({name: requestObj.body.channelname})
+                .next(function(err, collinfo) {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (collinfo) {
+                        db.collection(requestObj.body.channelname).find().toArray(function(err, response) {
+                            //Closing the DB connection on error.
+                            db.close();
+                            <span class="missing-if-branch" title="if path not taken" >I</span>if(err) {
+                                //while finding the collection if any error occurs return the error as callback
+<span class="cstat-no" title="statement not covered" >                                return deviceIDSCallback({"message":err.message,"code":err.code});</span>
+                            }
+                            else <span class="missing-if-branch" title="else path not taken" >E</span>if (response.length &gt; 0) {
+                                //Once the collection is found get all the deviceID's for the collection and return back as callback.
+                                var resultsArray = [];
+                                response.forEach (function (data){
+                                    resultsArray.push(data["_id"]);
+                                });
+                                return deviceIDSCallback(null,resultsArray);
+                            }
+                            else {
+                                //If no devices are subscribed return back error message as callback.
+<span class="cstat-no" title="statement not covered" >                                return deviceIDSCallback('No document(s) found');</span>
+                            }
+                        });
+                    }
+                    else {
+                        //Closing the DB connection on error.
+<span class="cstat-no" title="statement not covered" >                        db.close();</span>
+<span class="cstat-no" title="statement not covered" >                        return deviceIDSCallback({"message":"Kindly provide the proper channel name"});</span>
+                    }
+                });
+        });
+    };
+&nbsp;
+    //This call is for pushing the notification.
+    var pushNotificationToDevices = function (deviceIDsArray,pushNotifyCallback) {
+&nbsp;
+        //constructing the body for the push call
+        var body = {
+            "message" : requestObj.body["message"],
+            "deviceId" : deviceIDsArray
+        };
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (requestObj.body["settings"]) {
+            body["settings"] = requestObj.body["settings"];
+        }
+&nbsp;
+        //forming http request string
+        var options = {
+            url: configVals.pushNotifyEndPoint,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(body)
+        };
+&nbsp;
+        console.log('*****Push Notification body*****'+options.body);
+&nbsp;
+        //making the request
+        request(options, function (err, response) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+                //return back the error as callback
+<span class="cstat-no" title="statement not covered" >                return pushNotifyCallback(err);</span>
+            }
+            else {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (response.statusCode &amp;&amp; response.statusCode == 202) {
+                    //return back the success message as the callback.
+<span class="cstat-no" title="statement not covered" >                    return pushNotifyCallback(null,{"message":response.body});</span>
+                }
+                else {
+                    return pushNotifyCallback({"message":response.body});
+                }
+            }
+        });
+    };
+&nbsp;
+    //This is a callback function of pushNotifyToChannel.
+    //This will be called once the execution of required methods are done.
+    //This method will accept two parameters 'err' &amp; 'result'.
+    var finalCallback = function (err,result) {
+        //If "err": sending back the error with status code 400
+        // or if "result": sending back the result with proper message in JSON object format.
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (err) {
+            return callback(err);
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            return callback(null,result);</span>
+        }
+    };
+&nbsp;
+    //This is to execute set of methods synchronously. callback will be called once array of functions execution is done.
+    //First Param is array of functions &amp; second parameter is callback.
+    async.waterfall([getDeviceIDS,pushNotificationToDevices], finalCallback);
+};</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 20 2016 16:33:37 GMT+0530 (IST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

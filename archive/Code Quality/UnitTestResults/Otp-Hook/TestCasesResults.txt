@@ -1,0 +1,25 @@
+root@ip-10-175-142-138:/home/ubuntu/newCode/Microservices/Templates/NodeJS/Otp_Hook# ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/otptest.js
+Otp Server is listening on port 3000
+
+
+  OTP Test Cases
+    Method POST
+      ✓ should be able to Generate OTP (1649ms)
+    Method POST
+      ✓ should be able to validate OTP
+
+
+  2 passing (3s)
+
+=============================================================================
+Writing coverage object [/home/ubuntu/newCode/Microservices/Templates/NodeJS/Otp_Hook/coverage/coverage.json]
+Writing coverage reports at [/home/ubuntu/newCode/Microservices/Templates/NodeJS/Otp_Hook/coverage]
+=============================================================================
+
+=============================== Coverage summary ===============================
+Statements   : 80.72% ( 67/83 )
+Branches     : 60.71% ( 17/28 )
+Functions    : 90% ( 9/10 )
+Lines        : 80.72% ( 67/83 )
+================================================================================
+

@@ -1,0 +1,41 @@
+selvakumars-MacBook-Pro:PaaS_Catalog Srividya$ ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test.js
+App listening on port 3030
+
+
+  PaaSCatalog Test Cases
+    Getting of particular data based on type
+      ✓ should be able to GET entire data without any problem (2081ms)
+    Getting of particular data based on type
+      ✓ should be able to GET entire data without any problem
+    Getting of particular data based on type
+      ✓ should be able to GET entire data without any problem
+    Method Search
+      ✓ should able to search data based on user search string
+    Method Get Data
+      ✓ should be able to get required data without problems
+    Method Get organizations
+      ✓ should be able to get organizations in the selected platform (588ms)
+    Method Get Spaces
+      ✓ should be able to get spaces in the selected platform (624ms)
+    Method Get layouts Data
+      ✓ should be able to get layouts json data without problems (1576ms)
+    Method Get regions Data
+      ✓ should be able to get regions json data without problems (1560ms)
+    Method to check AppName existence
+      ✓ should be able to check the appname is existed in the selected platform or not (625ms)
+
+
+  10 passing (8s)
+
+=============================================================================
+Writing coverage object [/Users/Srividya/Microservices/Services/PaaS_Catalog/coverage/coverage.json]
+Writing coverage reports at [/Users/Srividya/Microservices/Services/PaaS_Catalog/coverage]
+=============================================================================
+
+=============================== Coverage summary ===============================
+Statements   : 85.64% ( 352/411 )
+Branches     : 54.72% ( 58/106 )
+Functions    : 95.65% ( 88/92 )
+Lines        : 85.64% ( 352/411 )
+================================================================================
+selvakumars-MacBook-Pro:PaaS_Catalog Srividya$ 

@@ -1,0 +1,21 @@
+applications:
+- name: appFactory
+  instances: 1
+  host: appfactory
+  path: ./target/appfactory-1.3.5.RELEASE.jar
+  memory: 1024M
+  services:
+    - p-rabbitmq
+
+  env: 
+   config_logLevel: info   
+   gist_username: ToolsTeam
+   gist_password: password-1
+   logger_select: graylog
+   deploy_location: cloud
+   grayLog_url: http://loggerservice.apps.digifabric.cognizant.com/saveLog
+   rabbitmq_service_name: p-rabbitmq
+   pcf_base_path: /home/vcap
+   github_clone_path: /home/vcap/
+   pcf_server_url: http://paascatalog.mvp2.cognizantone.org
+   pcf_api_appmanager_baseurl: http://appManagerServer.mvp2.cognizantone.org

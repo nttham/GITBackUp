@@ -1,0 +1,25 @@
+{
+  "name": "auth-service-broker",
+  "version": "0.1.0",
+  "description": "Skeleton Cloud Foundy Service Broker",
+  "main": "auth-service-broker.js",
+  "scripts": {
+    "start": "node auth-service-broker.js",
+    "preinstall": "bash gitClone.sh"
+  },
+  "dependencies": {
+    "async": "0.6.2",
+    "handlebars": "2.0.0",
+    "restify": "2.8.5",
+    "cf-nodejs-client": "0.13.0",
+    "zip-folder": "1.0.0",
+    "simple-git": "1.37.0",
+    "rmdir": "1.2.0",
+    "chai": "3.5.0",
+    "chai-http": "3.0.0",
+    "supertest": "1.2.0",
+    "istanbul": "0.4.4",
+    "request": "2.67.0",
+    "uuid": "2.0.2"
+  }
+}

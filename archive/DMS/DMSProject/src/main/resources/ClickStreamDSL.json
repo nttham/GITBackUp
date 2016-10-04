@@ -1,0 +1,30 @@
+{
+	"http": {
+		"dsl": "http"
+	},
+	"httpclient": {
+		"dsl": "time --fixed-delay=<@fixed-delay@> | httpclient --url-expression=<@url-expression@>"
+	},
+	"filter": {
+		"dsl": "filter --expression=<@expression@>"
+	},	
+	"transform": {	
+		"dsl": "transform --expression=<@expression@>"
+	},
+	"most-frequently-visited-page": {
+		"dsl": "field-value-counter --name=mfvp-<@ts@> --field-name=<@most-frequently-visited-page@>"
+
+	},
+	"most-searched-keywords": {
+		"dsl": "field-value-counter --name=msk-<@ts@> --field-name=<@most-searched-keywords@>"
+
+	},
+	"hits-from-channels": {
+		"dsl": "field-value-counter  --name=hfc-<@ts@> --field-name=<@hits-from-channels@>"
+
+	},
+	"mysql": {
+		"dsl": "jdbc --tableName=<@tableName@> --columnNames=<@columnNames@>"
+
+	}
+}

@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for AuthServiceBroker/auth-service-broker.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">AuthServiceBroker/</a> auth-service-broker.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.73% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>85/104</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">56.25% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>27/48</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>13/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.73% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>85/104</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ *
+ * MicroService  Service Broker , complying to version 2.4 of the interface specification
+ * http://docs.cloudfoundry.org/services/api.html
+ *
+ */
+&nbsp;
+'use strict';
+&nbsp;
+var config = require('./config/auth_service_broker');
+/* following configs are determined by environment variables */
+config.credentials = {};
+var restify = require('restify');
+var async = require('async');
+var Handlebars = require('handlebars');
+var server = restify.createServer({
+    name: 'auth_service_broker'
+});
+var NodeClient = require("./cf-node-client.js");
+var nodeClient = new NodeClient();
+var validator = require('is-my-json-valid');
+server.use(apiVersionChecker({
+    'major': 2,
+    'minor': 4
+}));
+server.use(restify.authorizationParser());
+server.use(authenticate(config.credentials));
+server.use(restify.fullResponse());
+server.use(restify.bodyParser());
+server.pre(restify.pre.userAgentConnection());
+var async = require('async');
+&nbsp;
+// To check the consistency
+function checkConsistency() {
+    var i, id, p, msg, plans, catalog;
+&nbsp;
+    catalog = config.catalog;
+    plans = config.plans;
+&nbsp;
+    for (i = 0; i &lt; catalog.services.length; i += 1) {
+        for (p = 0; p &lt; catalog.services[i].plans.length; p += 1) {
+            id = catalog.services[i].plans[p].id;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!plans.hasOwnProperty(id)) {
+<span class="cstat-no" title="statement not covered" >                msg = "ERROR: plan '" + catalog.services[i].plans[p].name + "' of service '" + catalog.services[i].name + "' is missing a specification.";</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error(msg);</span>
+            }
+        }
+    }
+}
+&nbsp;
+// get catalog
+server.get('/v2/catalog', function (request, response, next) {
+&nbsp;
+    response.send(config.catalog);
+    next();
+});
+&nbsp;
+//router for provisioning a service when a cf create-service is called
+server.put('/v2/service_instances/:id', function (request, response, next) {
+&nbsp;
+   console.log("create-service params : " + JSON.stringify(request.params));
+&nbsp;
+        // pushes the app to cloud foundry with the appName given by the client
+        var pushApp = function (pushHandler) {
+&nbsp;
+            //forming the environment_json which will be passed to the microservice app while pushing
+            //it to the cloud foundry which will inturn goes to its vcaps
+&nbsp;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(request.params.parameters.environment_json.facebook_clientID &amp;&amp; request.params.parameters.environment_json.facebook_clientSecret){
+                request.params.parameters.environment_json.facebook_callbackURL = "http://" + request.params.parameters.appname + "."+request.params.parameters.host+"/auth/facebook/callback";
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(request.params.parameters.environment_json.google_clientID &amp;&amp; request.params.parameters.environment_json.google_clientSecret){
+                request.params.parameters.environment_json.google_callbackURL = "http://" + request.params.parameters.appname + "."+request.params.parameters.host+"/auth/google/callback";
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(request.params.parameters.environment_json.twitter_clientID &amp;&amp; request.params.parameters.environment_json.twitter_clientSecret){
+                request.params.parameters.environment_json.twitter_callbackURL = "http://" + request.params.parameters.appname + "."+request.params.parameters.host+"/auth/twitter/callback";
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(request.params.parameters.environment_json.linkedin_clientID &amp;&amp; request.params.parameters.environment_json.linkedin_clientSecret){
+                request.params.parameters.environment_json.linkedin_callbackURL = "http://" + request.params.parameters.appname + "."+request.params.parameters.host+"/auth/linkedin/callback";
+            }
+&nbsp;
+&nbsp;
+            nodeClient.pushApp(request.params.parameters, pushHandler);
+        };
+&nbsp;
+&nbsp;
+    //callback for async calls
+    var finalCallback = function (err, result) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >            response.status(400);</span>
+<span class="cstat-no" title="statement not covered" >            response.end(JSON.stringify({'error': err}));</span>
+&nbsp;
+        }
+        else {
+            console.log("response " + JSON.stringify(result));
+            response.status(200);
+            response.end(JSON.stringify({'description': 'created instance of oAuth'}));
+&nbsp;
+        }
+    };
+    // If you wanted to provision other things add the sequential task here
+    async.waterfall([pushApp], finalCallback);
+   // }
+    next();
+});
+&nbsp;
+// router for un provision the service when a cf delete-service is called
+&nbsp;
+server.del('/v2/service_instances/:id', function (req, response, next) {
+    console.log("delete-service params : " + JSON.stringify(req.params));
+    response.send(200, {
+        'description': 'delete/unprovision done '
+    });
+&nbsp;
+    next();
+});
+&nbsp;
+// router for binding the service to an app when a cf bind-service is called
+&nbsp;
+server.put('/v2/service_instances/:instance_id/service_bindings/:id', function (req, response, next) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!req.params.parameters || !req.params.parameters.appname) {
+<span class="cstat-no" title="statement not covered" >            response.status(400);</span>
+<span class="cstat-no" title="statement not covered" >            response.end(JSON.stringify({'error': 'Please provide the app name as additional parameter'}));</span>
+        }
+        else {
+            // forming the JSON needed for the VCAP
+            var respData = {
+                "credentials": {
+                    "serviceUrl": "http://" + req.params.parameters.appname + "."+req.params.parameters.host
+&nbsp;
+                }
+&nbsp;
+&nbsp;
+            };
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(req.params.parameters.facebook){
+                respData.credentials.facebook_callbackURL = "http://" + req.params.parameters.appname + "."+req.params.parameters.host+"/auth/facebook/callback";
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(req.params.parameters.google){
+                respData.credentials.googlek_callbackURL = "http://" + req.params.parameters.appname + "."+req.params.parameters.host+"/auth/google/callback";
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(req.params.parameters.twitter){
+                respData.credentials.twitter_callbackURL = "http://" + req.params.parameters.appname + "."+req.params.parameters.host+"/auth/twitter/callback";
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if(req.params.parameters.linkedin){
+<span class="cstat-no" title="statement not covered" >                respData.credentials.linkedin_callbackURL = "http://" + req.params.parameters.appname + "."+req.params.parameters.host+"/auth/linkedin/callback";</span>
+            }
+            response.status(201);
+&nbsp;
+            response.end(JSON.stringify(respData));
+            next();
+        }
+    }
+);
+&nbsp;
+// router for unbinding the service from an app when a cf unbind-service is called
+server.del('/v2/service_instances/:instance_id/service_bindings/:id', function (req, response, next) {
+        response.send(200, {
+            'description': 'service un bind successfull'
+        });
+        next();
+    }
+);
+&nbsp;
+&nbsp;
+// list services (Not in spec :-)
+server.get('/v2/service_instances', <span class="fstat-no" title="function not covered" >function (request, response, next) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    response.send(501, {</span>
+        'description': JSON.stringify(response)
+    });
+<span class="cstat-no" title="statement not covered" >    next();</span>
+});
+&nbsp;
+function apiVersionChecker(version) {
+    var header = 'x-broker-api-version';
+    return function (request, response, next) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (request.headers[header]) {
+<span class="cstat-no" title="statement not covered" >            var pattern = new RegExp('^' + version.major + '\\.\\d+$');</span>
+<span class="cstat-no" title="statement not covered" >            if (!request.headers[header].match(pattern)) {</span>
+<span class="cstat-no" title="statement not covered" >                console.log('Incompatible services API version: ' + request.headers[header]);</span>
+<span class="cstat-no" title="statement not covered" >                response.status(412);</span>
+<span class="cstat-no" title="statement not covered" >                next(new restify.PreconditionFailedError('Incompatible services API version'));</span>
+            }
+        } else {
+            console.log(header + ' is missing from the request');
+        }
+        next();
+    };
+};
+&nbsp;
+function authenticate(credentials) {
+    return function (request, response, next) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (credentials.authUser || credentials.authPassword) {
+<span class="cstat-no" title="statement not covered" >            if (!(request.authorization &amp;&amp; request.authorization.basic &amp;&amp; request.authorization.basic.username === credentials.authUser &amp;&amp; request.authorization.basic.password === credentials.authPassword)) {</span>
+<span class="cstat-no" title="statement not covered" >                response.status(401);</span>
+<span class="cstat-no" title="statement not covered" >                response.setHeader('WWW-Authenticate', 'Basic "realm"="auth-service-broker"');</span>
+<span class="cstat-no" title="statement not covered" >                next(new restify.InvalidCredentialsError('Invalid username or password'));</span>
+            } else {
+                // authenticated!
+            }
+        } else {
+            // no authentication required.
+            next();
+        }
+        next();
+    };
+};
+&nbsp;
+server.get(/\/?.*/, restify.serveStatic({
+    directory: './public',
+    default: 'index.html'
+}));
+&nbsp;
+/** According to the spec, the JSON return message should include a description field. */
+server.on('uncaughtException', <span class="fstat-no" title="function not covered" >function (req, res, route, err) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log(err, err.stack);</span>
+    //res.send(500, { 'code' : 500, 'description' : err.message});
+});
+&nbsp;
+checkConsistency();
+var port = Number(process.env.VCAP_APP_PORT || 8080);
+&nbsp;
+server.listen(port, function () {
+    console.log("AuthService broker is listening at port : "+port);
+});
+&nbsp;
+module.exports = server;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 20 2016 13:20:32 GMT+0530 (IST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

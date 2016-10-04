@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="92h-Pt-Ksr">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="n4P-iP-cvd">
+            <objects>
+                <viewController id="92h-Pt-Ksr" customClass="ViewController" customModule="PushNotification" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6wG-ah-Jm6"/>
+                        <viewControllerLayoutGuide type="bottom" id="5hS-oQ-4Kq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ezH-oB-5ou">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3y-sX-hCx">
+                                <rect key="frame" x="208" y="285" width="177" height="30"/>
+                                <state key="normal" title="REGISTER YOUR DEVICE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickForRegisteringDevice:" destination="92h-Pt-Ksr" eventType="touchUpInside" id="zXp-Bb-NT3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="y3y-sX-hCx" firstAttribute="centerX" secondItem="ezH-oB-5ou" secondAttribute="centerX" id="Hiw-6b-nHv"/>
+                            <constraint firstItem="y3y-sX-hCx" firstAttribute="centerY" secondItem="ezH-oB-5ou" secondAttribute="centerY" id="sz2-aM-Ms3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7m3-WS-nmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="547" y="469"/>
+        </scene>
+    </scenes>
+</document>

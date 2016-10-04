@@ -1,0 +1,17 @@
+{
+  "auth"          : "Basic RGlnaUZvdW5kcnk6cGFzc3dvcmQtMQ==",
+  "categories"    : "MicroServices_Categories.json",
+  "services"      : "MicroServices_Services.json",
+  "hooks"         : "MicroServices_Hooks.json",
+  "bluemix"       : "MicroServices_Bluemix.json",
+  "layouts"       : "MicroServices_layouts.json",
+  "platforms"     : "MicroServices_platforms.json",
+  "regions"       : "MicroServices_regions.json",
+  "guids"         : "MicroServices_guids.json",
+  "vcapobjects"   : "MicroServices_vcapobjects.json",
+  "serviceDetails": "MicroServices_serviceDetails.json",
+  "loggerDetails" : "MicroServices_loggerDetails.json",
+  "notificationProtocols"  : "MicroServices_NotificationSupportedProtocols.json",
+  "notificationConfigurations" : "MicroServices_NotificationConfigurations.json",
+  "gistID"        : "6ba82dfddab053024329ffd40b0d8c75"
+}

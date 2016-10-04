@@ -1,0 +1,16 @@
+{
+  "name": "oAuth2.0-Authentication-template",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~3.3.4",
+    "jade": "^0.34.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
+    "passport-google-oauth2": "^0.1.6",
+    "passport-twitter": "^1.0.3",
+    "passport-linkedin-oauth2": "*"
+  }
+}

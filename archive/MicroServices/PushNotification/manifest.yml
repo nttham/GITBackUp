@@ -1,0 +1,5 @@
+---
+applications:
+- name: pushnotificationservice
+  memory: 256M
+  instances: 2

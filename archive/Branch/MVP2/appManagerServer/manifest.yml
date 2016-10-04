@@ -1,0 +1,18 @@
+applications:
+- name: appManagerServer
+  memory: 512M
+  instances: 1
+  host: appManagerServer
+  path: ./target/appManagerServer-v1.war
+  services:
+    - p-rabbitmq
+
+  env:   
+   config_logLevel: info
+   gist_username: ToolsTeam
+   gist_password: password-1
+   logger_select: Graylog
+   deploy_location: cloud
+   grayLog_url: http://loggerservice.apps.digifabric.cognizant.com/saveLog
+   passcatalog_server_url: http://paascatalog.qa.cognizantone.org 
+   rabbitmq_service_name: p-rabbitmq

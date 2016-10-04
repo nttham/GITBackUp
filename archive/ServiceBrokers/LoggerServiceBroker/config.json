@@ -1,0 +1,24 @@
+{
+    "protocol":"http://",
+    "zipFilePath":"application.zip",
+    "pass":"&password=",
+    "contentType":"application/json",
+    "charSet":"utf-8",
+    "authorization":"Basic Y2Y6",
+    "loggerJSON":"logger.json",
+    "gistID":"a0a7db06eb449c231937504a565ce06b",
+    "gistauthorization":"U3VyeWFrYWxhLkJvdHRhQGNvZ25pemFudC5jb206U3VyeWExMjM=",
+    "gitURL":"https://raw.githubusercontent.com/TheCognizantFoundry/Microservices/MS_Release2/ProdBuilds_MicroServiceApps/Logger/application.zip",
+    "space_guid":"a152205a-aa8f-4e0e-97bd-17c59c3ceaa1",
+    "domain_guid":"df98298c-72b0-4367-b26d-bf95b10c1e6b",
+    "endpoint":"https://api.qa.cognizantone.org",
+    "username" : "microuser",
+    "password" : "microuser",
+    "loginProtocol":"https://login.qa.cognizantone.org/oauth/token?grant_type=password&username=",
+    "host" : "qa.cognizantone.org",
+    "memory" : 128,
+    "disk_quota" : 512,
+    "loggerbaseurl":"http://loggerservice.cognizantone.org",
+    "loggerapikey":"apikey"
+}
+

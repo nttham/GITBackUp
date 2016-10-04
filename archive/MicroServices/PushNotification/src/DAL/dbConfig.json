@@ -1,0 +1,8 @@
+{
+  "dbName":"PushCoreDB",
+  "dbHostName":"54.169.162.137",
+  "dbPort":"10053",
+  "dbUserName":"admin",
+  "dbPassword":"1e2Pjjd",
+  "dbType":"mongodb"
+}

@@ -1,0 +1,5 @@
+---
+applications:
+- name: helloworld
+  memory: 100MB
+  instances: 1

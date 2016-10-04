@@ -1,0 +1,9 @@
+{
+  "expiresIn" : 900,
+  "sessionMaxAge" : 1800000,
+  "generate":"generate",
+  "validate":"validate",
+  "protocol":"http://",
+  "swaggerPath":"/api-docs"
+
+}

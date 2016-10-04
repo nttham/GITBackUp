@@ -1,0 +1,46 @@
+selvakumars-MacBook-Pro:Channels Srividya$ ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha channelsTest.js
+App listening on port 8080
+
+
+  Channels Test Cases
+    This api call will create a channel in mongodb
+      ✓ should be able to create a channel without any problems (114ms)
+    This api call will delete a channel from mongodb
+      ✓ should be able to delete a channel without any problems
+    This api call will create a channel in mongodb
+      ✓ should be able to return error is the channel is already exists
+    This api call will delete a channel from mongodb
+      ✓ should be able to return error if the channel is not exists to delete
+    This api call will subscribe the user to a channel
+      ✓ should be able to subscribe to a channel without any problems
+    This api call will unsubscribe the user from a channel
+      ✓ should be able to unsubscribe from a channel without any problems
+    This api call will subscribe the user to a channel
+      ✓ should be able to return the error if the device is already subscribed
+    This api call will subscribe the user to a channel
+      ✓ should be able to return the error if the channel is not exists
+    This api call will unsubscribe the user from a channel
+      ✓ should be able to return error if the device is already unsubscribed from the channel
+    This api call will subscribe the user to a channel
+      ✓ should be able to return the error if the channel is not exists
+    This api call will push the notification to a channel
+*****Push Notification body*****{"message":"Helloooooo from srividya test","deviceId":["Apple5C","911498052315912"],"settings":{"apns":{"sound":"ping.aiff","badge":3,"payload":{"sample":"message for APNS"}}}}
+      ✓ should be able to push the notification to the devices subscribed for that channel (881ms)
+    This api call will push the notification to a channel
+      ✓ should be able to return error if the channel is not exists
+
+
+  12 passing (2s)
+
+=============================================================================
+Writing coverage object [/Users/Srividya/Microservices/MicroServices/Channels/coverage/coverage.json]
+Writing coverage reports at [/Users/Srividya/Microservices/MicroServices/Channels/coverage]
+=============================================================================
+
+=============================== Coverage summary ===============================
+Statements   : 88.15% ( 238/270 )
+Branches     : 66.25% ( 53/80 )
+Functions    : 98.72% ( 77/78 )
+Lines        : 88.15% ( 238/270 )
+================================================================================
+selvakumars-MacBook-Pro:Channels Srividya$ 

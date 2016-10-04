@@ -1,0 +1,5 @@
+---
+applications:
+- name: logger
+  memory: 512MB
+  instances: 1

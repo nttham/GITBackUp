@@ -1,0 +1,14 @@
+//- views/index.jade
+html
+    head
+        title
+    body
+        form(method="post",enctype="multipart/form-data",action="/apnssettings")
+            p
+                input(type="text",name="passPhrase",placeholder="passPhrase")
+            p
+                input(type="text",name="apikey",placeholder="apikey")
+            p
+                input(type="file",name="upl")
+            p
+                input(type="submit")

@@ -1,0 +1,739 @@
+{
+  "swagger": "2.0",
+   "schemes": [
+    "http"
+  ],
+  "info": {
+    "title": "DigiFabric Authentication Rest API",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "description": "Authentication Providers",
+      "name": "Providers"
+    },
+    {
+      "description": "Ldap Protocol",
+      "name": "Ldap"
+    },
+    {
+      "description": "Hooks for Prehook or PostHook",
+      "name": "Hooks"
+    },
+    {
+      "description": "Custom Oauth with Oauth 2.0 protocol",
+      "name": "Custom Oauth"
+    },
+    
+    {
+      "description": "Completes Authentication",
+      "name": "Oauth Complete"
+    }
+  ],
+  "basePath": "/",
+  "paths": {
+    "/validateOtp": {
+      "post": {
+        "description": "If any further hooks are available then response json will have details of nextCall, token and channelProvider with statusCode as 303. If there are no further prehooks then response json will have the details of nextCall with status code as 302. Generally, it will be the redirect url to the providers. If no further posthooks are available then response json will have the details of the loggedin user with status code as 200. This response will have accessToken, id, displayName and provider details. For twitter refreshToken will be available.",
+        "summary": "The token received from the previous call is passed as a header parameter along with the Content-Type. On the other hand, we have to pass the Otpcode received via prior call in the body of the request. Hooks can be configured accordingly.",
+        "operationId": "validateOtp",
+        "tags": [
+          "Hooks"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "401":{
+          "description": "Not authorised",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "error"
+                
+              ]
+            }
+        },
+          "400": {
+            "description": "Bad Request"
+                 
+          
+        },
+        "200": {
+                  "description": "authenticated accessToken and other details are fetched",
+                  "schema": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                      "accessToken": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "accessToken"
+                    ]
+                  }
+                },
+                "303": {
+                  "description": "further prehooks or posthooks are available to process",
+                  "schema": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                      "nextCall": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "token": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "channelprovider": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "nextCall",
+                      "token"
+                    ]
+                  }
+                }
+        },
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "The token which is retained from the prior call should be passed as header.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "It is the content type of the body.",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "application/json"
+            ]
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Body of the API call",
+            "required": true,
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "otpCode": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "otpCode"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/generateOtp": {
+      "post": {
+        "description": "The API fetches the token from previous call as a header along with the Content-Type. For channelProvider as sendgrid this API requires request body parameters as toRecipient(ex- someemail@gmail.com) and fromMail(ex- someemail@gmail.com). The response json will have details of nextCall and token with statusCode as 303.",
+        "summary": "OTP would be either generated/skipped based on conditional hooks configured on the UI and the header values passed from the request. OTP would be generated if a conditional hook is added and same is passed through headers or if a conditional hook is not added at all. OTP would be skipped if a conditional hook is added and not passed through headers.",
+        "operationId": "generateOtp",
+        "tags": [
+          "Hooks"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "303": {
+            "description": "See Other",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall",
+                "token"
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+        },
+        "401":{
+          "description": "Not authorised",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "error"
+                
+              ]
+            }
+        }
+        },
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "The token which is retained from the prior call should be passed as header.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "Content-Type is the type of body.",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "application/json"
+            ]
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "body of api call",
+            "required": true,
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "toRecipient": {
+                  "type": "string",
+                  "minLength": 1,
+                  "enum": [
+                    "drishyapillai0304@gmail.com"
+                  ]
+                },
+                "fromMail": {
+                  "type": "string",
+                  "minLength": 1,
+                  "enum": [
+                    "Drishya.Pillai@cognizant.com"
+                  ]
+                }
+              },
+              "required": [
+                "toRecipient",
+                "fromMail"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/auth/custom": {
+      "post": {
+        "description": "These APIs will initiate the authentication to providers. This is the first API to be consumed for authentication with apiKey as headers. In return if apiKey is valid then a token will be sent along with next call details. If any prehooks are available then response json will have details of nextCall, token and channelProvider with statusCode as 303. If no prehooks are available then response json will have the details of nextCall with status code as 302.",
+        "summary": "When we give apikey as the header,it checks its authenticity and returns an access token if its valid. We can also configure preHooks as per our requirement.",
+        "operationId": "custom-auth",
+        "tags": [
+          "Custom Oauth"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "apikey",
+            "description": "The apikey will be obtained from the VCAPS of the bounded developer application and returns token with next call details if valid.",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/auth/facebook": {
+      "post": {
+        "description": "These APIs will initiate the authentication to providers. This is the first API to be consumed for authentication with apiKey as headers. In return if apiKey is valid then a token will be sent along with next call details. If any prehooks are available then response json will have details of nextCall, token and channelProvider with statusCode as 303. If no prehooks are available then response json will have the details of nextCall with status code as 302.",
+        "summary": "When we give apikey as the header,it checks its authenticity and returns an access token if its valid. We can also configure preHooks as per our requirement.",
+        "operationId": "facebook-oauth",
+        "tags": [
+          "Providers"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401":{
+          "description": "Not authorised",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+        },
+         "303":{
+          "description": "With prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "channelprovider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall",
+                "token"
+              ]
+            }
+        },
+        "302":{
+          "description": "Without prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall"
+              ]
+            }
+        }
+        },
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "apikey",
+            "description": "The apikey will be obtained from the VCAPS of the bounded developer application and returns token with next call details if valid.",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/auth/google": {
+      "post": {
+        "description": "These APIs will initiate the authentication to providers. This is the first API to be consumed for authentication with apiKey as headers. In return if apiKey is valid then a token will be sent along with next call details. If any prehooks are available then response json will have details of nextCall, token and channelProvider with statusCode as 303. If no prehooks are available then response json will have the details of nextCall with status code as 302.",
+        "summary": "When we give apikey as the header,it checks its authenticity and returns an access token if its valid. We can also configure preHooks as per our requirement.",
+        "operationId": "google-oauth",
+        "tags": [
+          "Providers"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401":{
+          "description": "Not authorised",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+        },
+         "303":{
+          "description": "With prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "channelprovider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall",
+                "token"
+              ]
+            }
+        },
+        "302":{
+          "description": "Without prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall"
+              ]
+            }
+        }
+        },
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "apikey",
+            "description": "The apikey will be obtained from the VCAPS of the bounded developer application and returns token with next call details if valid.",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/auth/linkedin": {
+      "post": {
+        "description": "These APIs will initiate the authentication to providers. This is the first API to be consumed for authentication with apiKey as headers. In return if apiKey is valid then a token will be sent along with next call details. If any prehooks are available then response json will have details of nextCall, token and channelProvider with statusCode as 303. If no prehooks are available then response json will have the details of nextCall with status code as 302.",
+        "summary": "When we give apikey as the header,it checks its authenticity and returns an access token if its valid. We can also configure preHooks as per our requirement.",
+        "operationId": "linkedin-oauth",
+        "tags": [
+          "Providers"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401":{
+          "description": "Not authorised",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+        },
+         "303":{
+          "description": "With prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "channelprovider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall",
+                "token"
+              ]
+            }
+        },
+        "302":{
+          "description": "Without prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall"
+              ]
+            }
+        }
+        },
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "apikey",
+            "description": "The apikey will be obtained from the VCAPS of the bounded developer application and returns token with next call details if valid.",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/auth/twitter": {
+      "post": {
+        "description": "These APIs will initiate the authentication to providers. This is the first API to be consumed for authentication with apiKey as headers. In return if apiKey is valid then a token will be sent along with next call details. If any prehooks are available then response json will have details of nextCall, token and channelProvider with statusCode as 303. If no prehooks are available then response json will have the details of nextCall with status code as 302.",
+        "summary": "When we give apikey as the header,it checks its authenticity and returns an access token if its valid. We can also configure preHooks as per our requirement.",
+        "operationId": "twitter-oauth",
+        "tags": [
+          "Providers"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses":{
+          "400": {
+            "description": "Bad Request"
+          },
+          "401":{
+          "description": "Not authorised",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+        },
+         "303":{
+          "description": "With prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "channelprovider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall",
+                "token"
+              ]
+            }
+        },
+        "302":{
+          "description": "Without prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall"
+              ]
+            }
+        }
+        },
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "apikey",
+            "description": "The apikey will be obtained from the VCAPS of the bounded developer application and returns token with next call details if valid.",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/auth/complete": {
+      "post": {
+        "description": "In response if any post hooks are available then response json will have details of nextCall, token and channelProvider with statusCode as 303. If no prehooks are available then response json will have the details of the loggedin user with status code as 200. This response will have accessToken, id, displayName and provider details. For twitter refreshToken will be available.",
+        "summary": "The token which is retained from the prior call should be passed as 'token' along with the 'apikey' and 'Content-Type' in headers. Hooks can be configured accordingly.",
+        "operationId": "authComplete",
+        "tags": [
+          "Oauth Complete"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401":{
+          "description": "Not authorised",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+        },
+         "303":{
+          "description": "With prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "nextCall": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "channelprovider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "nextCall",
+                "token"
+              ]
+            }
+        },
+        "200":{
+          "description": "Without prehooks available to process",
+          "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "accessToken": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "displayName": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                }
+
+              },
+              "required": [
+                "accessToken"
+              ]
+            }
+        }
+        },
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "The token which is retained from the prior call should be passed as header.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "It is the content type of the body.",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "application/json"
+            ]
+          },
+          {
+            "in": "header",
+            "name": "apikey",
+            "description": "apikey which will be obtained from the VCAPS of the bounded developer application",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    }
+  }
+}

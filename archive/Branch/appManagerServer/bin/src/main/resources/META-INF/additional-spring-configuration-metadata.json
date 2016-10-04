@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "spring.rabbitmq.auth.queuename",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.rabbitmq.auth.queuename'"
+  },
+  {
+    "name": "spring.rabbitmq.exchange",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.rabbitmq.exchange'"
+  },
+  {
+    "name": "spring.rabbitmq.queuename",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.rabbitmq.queuename'"
+  }
+]}

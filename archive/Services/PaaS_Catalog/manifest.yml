@@ -1,0 +1,5 @@
+---
+applications:
+- name: paascatalog
+  memory: 1G
+  instances: 1

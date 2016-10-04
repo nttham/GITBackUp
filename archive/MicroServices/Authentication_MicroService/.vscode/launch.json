@@ -1,0 +1,48 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/src/app.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "apiKey": "e75f9b70-7a4a-11e6-8052-e310f79d1c0e",
+                "secretKey": "e75f9b71-7a4a-11e6-8052-e310f79d1c0e",
+                "config": "{\"prehooks\":{\"facebook\":[{\"channelprovider\":\"twilio\",\"channel\":\"OTP\",\"condition\":[{\"key\":\"x\",\"operator\":\"%21=\",\"value\":\"007\",\"operand\":\"\"}]},{\"channelprovider\":\"sendgrid\",\"channel\":\"OTP\",\"condition\":[{\"key\":\"Y\",\"operator\":\">=\",\"value\":\"15\",\"operand\":\"\"}]}],\"custom\":[{\"channelprovider\":\"twilio\",\"channel\":\"OTP\",\"condition\":[{\"key\":\"x\",\"operator\":\"==\",\"value\":\"007\",\"operand\":\"\"}]},{\"channelprovider\":\"sendgrid\",\"channel\":\"OTP\",\"condition\":[{\"key\":\"Y\",\"operator\":\">=\",\"value\":\"15\",\"operand\":\"\"}]}],\"ldap\":[{\"channelprovider\":\"twilio\",\"channel\":\"OTP\",\"condition\":[{\"key\":\"x\",\"operator\":\"==\",\"value\":\"007\",\"operand\":\"\"}]},{\"channelprovider\":\"sendgrid\",\"channel\":\"OTP\",\"condition\":[{\"key\":\"Y\",\"operator\":\">=\",\"value\":\"15\",\"operand\":\"\"}]}]},\"configuration\":{\"facebook\":{\"clientID\":\"468331803360754\",\"protocol\":\"oauth\",\"clientSecret\":\"8fc8690146770e0a637adcc7293280cc\",\"scope\":[\"public_profile\"]},\"custom\":{\"authorizationURL\":\"https://login.microsoftonline.com/9c5f32b8-daee-45fe-bc9c-10aecd2bc4db/oauth2/authorize\",\"protocol\":\"oauth\",\"tokenURL\":\"https://login.microsoftonline.com/9c5f32b8-daee-45fe-bc9c-10aecd2bc4db/oauth2/token\",\"clientID\":\"7119d908-d06d-4937-9ef6-f02f609ac05f\",\"clientSecret\":\"rd7bTr4kO3X/X9V4+WH1xw+RfaqXXHAht4B+CSA60BI=\",\"resource\":\"http://localhost:3000/auth/customOauth/resource\",\"scope\":[\"https://outlook.office.com/mail.read\"]},\"twilio\":{\"accountid\":\"ACa923a4c04cd068b80c5852f4b2ccb4b4\",\"accounttoken\":\"8964212fcc0395740729c322f5efb1a3\"},\"sendgrid\":{\"accountid\":\"r8skU2912a\",\"accounttoken\":\"BPRV4rL9N7jM9272\"},\"ldap\":{\"ldapURL\":\"ldap://54.208.64.98\",\"protocol\":\"ldap\"}},\"channels\":{\"otp\":{\"length\":\"5\",\"type\":\"numeric\",\"expiryTime\":\"1\"}}}"
+            },
+            "externalConsole": false,
+            "sourceMaps": false,
+            "outDir": null
+        },
+        {
+            "name": "Attach",
+            "type": "node",
+            "request": "attach",
+            "port": 5858,
+            "address": "localhost",
+            "restart": false,
+            "sourceMaps": false,
+            "outDir": null,
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": null
+        },
+        {
+            "name": "Attach to Process",
+            "type": "node",
+            "request": "attach",
+            "processId": "${command.PickProcess}",
+            "port": 5858,
+            "sourceMaps": false,
+            "outDir": null
+        }
+    ]
+}

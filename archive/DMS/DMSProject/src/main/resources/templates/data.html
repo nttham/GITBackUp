@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script>
+ $( document ).ready(function() {
+	//var text = '{"employees":[' + '{"firstName":"John","lastName":"Doe" },'
+	//		+ '{"firstName":"Anna","lastName":"Smith" },'
+	//		+ '{"firstName":"Peter","lastName":"Jones" }]}';  
+			
+			
+			
+  // var postdata = '{ "request": { "streamname": "TestStream500", "source": { "type": "http", "attributes": [{ "key": "port", "value": "9001" },{ "key": "label", "value": "http" }, { "key": "pattern", "value": "mypatt" } ] }, "processor": { "type": "pmml", "attributes": [{ "key": "label", "value": "pmml" }, { "key": "inputs", "value": "Sepal.Length=payload.sepalLength,Sepal.Width=payload.sepalWidth,Petal.Length=payload.petalLength,Petal.Width=payload.petalWidth" }, { "key": "modelLocation", "value": "file:///D:/SCDFSoftWares/iris-flower-classification-naive-bayes-1.pmml.xml" }, { "key": "model-name", "value": "http" }, { "key": "model-name-expression", "value": "exppp" }, { "key": "outputs", "value": "Predicted_Species=payload.predictedSpecies" }, {  "key": "inputtype", "value": "application/x-spring-tuple" }, { "key": "outputtype", "value": "application/json" }  ] }, "sink": { "type": "log", "attributes": [{ "key": "label", "value": "log" }, { "key": "expression", "value": "exeeee" }, { "key": "level", "value": "level" }, { "key": "name", "value": "myname" }] }, "tapstreamname": "file-content", "deploy": "true" } }'		
+  // var postdata = '{ "request": { "streamname": "TestStream117", "source": { "type": "http", "attributes": [{ "key": "port", "value": "9001" },{ "key": "label", "value": "http" }, { "key": "pattern", "value": "mypatt" }] }, "processor": { "type": "pmml", "attributes": [{ "key": "label", "value": "pmml" }, { "key": "inputs", "value": "Sepal.Length=payload.sepalLength,Sepal.Width=payload.sepalWidth,Petal.Length=payload.petalLength,Petal.Width=payload.petalWidth" }, { "key": "modelLocation", "value": "https://raw.githubusercontent.com/spring-cloud/spring-cloud-stream-modules/master/pmml-processor/src/test/resources/iris-flower-classification-naive-bayes-1.pmml.xml" }, { "key": "model-name", "value": "http" }, { "key": "model-name-expression", "value": "exppp" }, { "key": "outputs", "value": "Predicted_Species=payload.predictedSpecies" }, {  "key": "inputtype", "value": "application/x-spring-tuple" }, { "key": "outputtype", "value": "application/json" }  ] }, "sink": { "type": "log", "attributes": [{ "key": "label", "value": "log" }, { "key": "expression", "value": "exeeee" }, { "key": "level", "value": "level" }, { "key": "name", "value": "myname" }] }, "tapstreamname": "file-content", "deploy": "true" } }'		
+  // var postdata ='{ "request": { "streamname": "TestStream155", "source": { "type": "http", "attributes": [{ "key": "server.port", "value": "9001" }] }, "processor": { "type": "pmml", "attributes": [{ "key": "label", "value": "pmml" }, { "key": "inputs", "value":"Sepal.Length=payload.sepalLength,Sepal.Width=payload.sepalWidth,Petal.Length=payload.petalLength,Petal.Width=payload.petalWidth" }, { "key": "modelLocation", "value": "file:///D:/SCDFSoftWares/iris-flower-classification-naive-bayes-1.pmml.xml" }, { "key": "outputs", "value": "Predicted_Species=payload.predictedSpecies" }, { "key": "inputtype", "value": "application/x-spring-tuple" }, { "key": "outputtype", "value": "application/json" }  ] }, "sink": { "type": "log", "attributes": [{ "key": "label", "value": "log" }] }, "tapstreamname": "file-content", "deploy": "true" } }'
+  
+   var postdata ='{ "servicename": "ClickstreamService", "platform": "2004", "boundtype": "yes", "category": "Clickstream", "spaceguid": "15ccd981-126f-4762-b54e-9c2e444f0691", "serviceplanguid": "33aade5f-7663-4d24-b39f-ea8e54d999a6", "accesstoken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiI3Mzg0ZjQ4MzlhZDc0MjViYWE3YWU1NWI1ZmFlOTE5MyIsInN1YiI6ImE2YmEwMThiLTA3MTItNDcxZS1hZDAwLWM2MzQzZWQ3ZjAwNCIsInNjb3BlIjpbIm9wZW5pZCIsInVhYS51c2VyIiwiY2xvdWRfY29udHJvbGxlci5yZWFkIiwicGFzc3dvcmQud3JpdGUiLCJjbG91ZF9jb250cm9sbGVyLndyaXRlIl0sImNsaWVudF9pZCI6ImNmIiwiY2lkIjoiY2YiLCJhenAiOiJjZiIsImdyYW50X3R5cGUiOiJwYXNzd29yZCIsInVzZXJfaWQiOiJhNmJhMDE4Yi0wNzEyLTQ3MWUtYWQwMC1jNjM0M2VkN2YwMDQiLCJvcmlnaW4iOiJ1YWEiLCJ1c2VyX25hbWUiOiJydWRocmEiLCJlbWFpbCI6InJ1ZGhyYSIsImF1dGhfdGltZSI6MTQ3MDYzNDkxNiwicmV2X3NpZyI6IjY0ODczZTc5IiwiaWF0IjoxNDcwNjM0OTE2LCJleHAiOjE0NzA2MzU1MTYsImlzcyI6Imh0dHBzOi8vdWFhLmNvZ25pemFudG9uZS5vcmcvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiY2YiLCJvcGVuaWQiLCJ1YWEiLCJjbG91ZF9jb250cm9sbGVyIiwicGFzc3dvcmQiXX0.W-CAoOK0QVMclCOsYm_1RgbNeEufHnOHh6DaGaMuo1HpBoTe6JSliB0RXqOnNADJIxQKpe257NtCG_yjldpZ9NlPUIF4mxKDoxvnAvY2iXrLTAJbGK8F9hbKs1boPnWAbgi6bGezJeipGNqn63YQd6QU-uwV7JZYLA5GHF2UhYfJkATBawFdaZA2wyAcLpLe5koHOE0gEDzyQe9Yp9b0bZQtuEiQJvOdd5E-EBpjSTBOgAeRCgE62oiNNLwIjp9MtWiVMRAGPOvEN18kPvjJnYYLdUqgvLjNHAs4CBKZy0OXtsiTwznJ-vnTK-sT99pawQuMWT1qBinSVioQEgeKug", "devlopergiturl": "", "devlopergitusername": "", "devlopergitpassword": "Usyscoms123", "environment_json": { "stream_definition": { "stream_name": "Clickstream", "source": [ { "type": "http", "attributes": [ { "key": "URL", "value": "USER PROVIDED ENDPOINT" }, { "key": "polling-interval", "value": "15" } ] } ], "processor": [ { "type": "filter1", "attributes": [ { "key": "column-name", "value": "country" }, { "key": "operation", "value": "==" }, { "key": "match-val", "value": "US" } ] }, { "type": "filter2", "attributes": [ { "key": "column-name", "value": "language" }, { "key": "operation", "value": "==" }, { "key": "match-val", "value": "en" } ] } ], "stream_analytics_source": "processor.filter1", "stream_analytics": [ { "name": "most-frequently-visited-page", "type": "field-value-counter" }, { "name": "most-searched-keywords", "type": "field-value-counter" }, { "name": "time-spent-on-page", "type": "field-value-counter" }, { "name": "hits-from-channels", "type": "field-value-counter" } ], "storage": { "type": "mysql", "username": "abc", "password": "xyz", "url": "jdbc:mysql://DBhost:3306/DB" } }, "data_schema": [ { "key": "date", "description": "Date of Page request" }, { "key": "time", "description": "Time of Page request" }, { "key": "visitor_ip_address", "description": "Visitor IP Address" }, { "key": "visitor_uid", "description": "Visitor Unique ID" }, { "key": "session_id", "description": "Session ID" }, { "key": "landing_page", "description": "Landing Page" }, { "key": "visit_count", "description": "Visit Count" }, { "key": "page_view_count", "description": "Page View Count" }, { "key": "campaign", "description": "Campaign" }, { "key": "search_keywords", "description": "Search Keywords" }, { "key": "referrer_url", "description": "Referrer URL" }, { "key": "page_encoding", "description": "Page Encoding" }, { "key": "screen_resolution", "description": "Screen Resolution" }, { "key": "browser_view_resolution", "description": "Browser Viewable Resolution" }, { "key": "browser_language", "description": "Browser Language" }, { "key": "user_agent", "description": "Full User-Agent String" }, { "key": "visitor_city", "description": "City" }, { "key": "visitor_state", "description": "State" }, { "key": "visitor_country", "description": "Country" }, { "key": "lat", "description": "Latitude" }, { "key": "long", "description": "Longitude" }, { "key": "hostname", "description": "Request Hostname" } ] }, "otherservices": [] } '
+  
+	/* obj = JSON.parse(text);
+	document.getElementById("demo").innerHTML = obj.employees[1].firstName
+			+ " " + obj.employees[1].lastName; */
+	$("#deploycall").click(function(){
+		$.ajax({
+			url : "./deploy",
+			type : "POST",
+			data : postdata,
+			dataType : "json",
+			contentType : "application/json; charset=utf-8",
+			success : function() {
+				
+			}
+		});
+	});
+});
+</script>
+</head>
+ <body style="background-color:powderblue;">
+
+	<h2 align="center">Create Stream from JSON Data</h2>
+
+	<p id="demo"></p>
+
+
+	<div align="center">
+		<input type="button" value="deploy" id="deploycall" />
+	</div>
+
+</body>
+</html>

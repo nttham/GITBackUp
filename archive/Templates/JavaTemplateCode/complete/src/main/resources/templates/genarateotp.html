@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example </title>
+		<style>
+h3 {text-align:center;}
+</style>
+    </head>
+   <body style="background-color:powderblue;">     
+        <form th:action="@{/requestotp}" method="post">        
+           <p style="text-align:center;"><div align="center"><input type="submit" value="Genarate OTP"/></div></p>
+        </form>
+    </body>
+</html>

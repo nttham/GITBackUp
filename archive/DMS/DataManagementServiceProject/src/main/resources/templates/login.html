@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example </title>
+    </head>
+    <body style="background-color:powderblue;"> 
+            <h3 align="center">Please provide below details</h3>  
+            
+            
+     <form  th:action="@{/deploy}" th:object="${dataVO}" method="post">
+    	<div align="center"><label> <b>Source : </b>
+              <input type="text" th:field="*{source}" />
+              </label>
+            </div><br/> 
+            
+           <div align="center"><label> <b>Processor : </b>
+              <input type="text" th:field="*{processor}" />
+              </label>
+            </div><br/> 
+            
+            <div align="center"><label> <b>Sink : </b>
+              <input type="text" th:field="*{sink}" />
+              </label>
+            </div><br/>             
+       <div align="center"><input type="submit" value="deploy"/></div>
+    </form>
+            
+
+    </body>
+</html>

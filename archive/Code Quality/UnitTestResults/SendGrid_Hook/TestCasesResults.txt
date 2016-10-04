@@ -1,0 +1,23 @@
+./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/sendgridtest.js
+
+
+  check whether sendgridservice is present or not
+    ? should exist
+
+  check Email Functionality
+    ? should exist (452ms)
+
+
+  2 passing (463ms)
+
+=============================================================================
+Writing coverage object [/home/ubuntu/GitOTP/Microservices/Templates/NodeJS/SendGrid_Hook/coverage/coverage.json]
+Writing coverage reports at [/home/ubuntu/GitOTP/Microservices/Templates/NodeJS/SendGrid_Hook/coverage]
+=============================================================================
+
+=============================== Coverage summary ===============================
+Statements   : 84.62% ( 11/13 )
+Branches     : 50% ( 1/2 )
+Functions    : 100% ( 3/3 )
+Lines        : 84.62% ( 11/13 )
+================================================================================

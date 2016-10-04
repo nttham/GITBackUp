@@ -1,0 +1,26 @@
+{
+  "appname": "MyRetailApplication",
+  "servicename": "authenticationdemoinstance",
+  "authprovider": {
+    "facebook": {
+      "apiid": "478519535677977",
+      "apisecret": "a9bc36abea045066cd4be131e278ff80"
+    }
+  },
+  "platform": {
+    "name": "congnizant-one",
+    "username": "surya",
+    "password": "surya",
+  },
+  "git_templatecode": {
+    "url": "https://github.com/bsuryakala/Authentication-TemplateApp.git",
+    "username": "Suryakala.Botta@cognizant.com",
+    "password": "Surya123"
+  },
+  "git_startercode": {
+    "url": "https://github.com/sibabrata-acharya/Authentication-StarterApp.git",
+    "username": "sibabrata.acharya@cognizant.com",
+    "password": "shiv223acharya"
+  },
+  "logger": false
+}

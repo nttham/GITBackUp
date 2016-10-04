@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script>
+$( document ).ready(function() {
+	var text = '{"employees":[' + '{"firstName":"John","lastName":"Doe" },'
+			+ '{"firstName":"Anna","lastName":"Smith" },'
+			+ '{"firstName":"Peter","lastName":"Jones" }]}';
+			
+			
+			
+  // var postdata = '{ "request": { "streamname": "TestStream500", "source": { "type": "http", "attributes": [{ "key": "port", "value": "9001" },{ "key": "label", "value": "http" }, { "key": "pattern", "value": "mypatt" } ] }, "processor": { "type": "pmml", "attributes": [{ "key": "label", "value": "pmml" }, { "key": "inputs", "value": "Sepal.Length=payload.sepalLength,Sepal.Width=payload.sepalWidth,Petal.Length=payload.petalLength,Petal.Width=payload.petalWidth" }, { "key": "modelLocation", "value": "file:///D:/SCDFSoftWares/iris-flower-classification-naive-bayes-1.pmml.xml" }, { "key": "model-name", "value": "http" }, { "key": "model-name-expression", "value": "exppp" }, { "key": "outputs", "value": "Predicted_Species=payload.predictedSpecies" }, {  "key": "inputtype", "value": "application/x-spring-tuple" }, { "key": "outputtype", "value": "application/json" }  ] }, "sink": { "type": "log", "attributes": [{ "key": "label", "value": "log" }, { "key": "expression", "value": "exeeee" }, { "key": "level", "value": "level" }, { "key": "name", "value": "myname" }] }, "tapstreamname": "file-content", "deploy": "true" } }'		
+  // var postdata = '{ "request": { "streamname": "TestStream117", "source": { "type": "http", "attributes": [{ "key": "port", "value": "9001" },{ "key": "label", "value": "http" }, { "key": "pattern", "value": "mypatt" }] }, "processor": { "type": "pmml", "attributes": [{ "key": "label", "value": "pmml" }, { "key": "inputs", "value": "Sepal.Length=payload.sepalLength,Sepal.Width=payload.sepalWidth,Petal.Length=payload.petalLength,Petal.Width=payload.petalWidth" }, { "key": "modelLocation", "value": "https://raw.githubusercontent.com/spring-cloud/spring-cloud-stream-modules/master/pmml-processor/src/test/resources/iris-flower-classification-naive-bayes-1.pmml.xml" }, { "key": "model-name", "value": "http" }, { "key": "model-name-expression", "value": "exppp" }, { "key": "outputs", "value": "Predicted_Species=payload.predictedSpecies" }, {  "key": "inputtype", "value": "application/x-spring-tuple" }, { "key": "outputtype", "value": "application/json" }  ] }, "sink": { "type": "log", "attributes": [{ "key": "label", "value": "log" }, { "key": "expression", "value": "exeeee" }, { "key": "level", "value": "level" }, { "key": "name", "value": "myname" }] }, "tapstreamname": "file-content", "deploy": "true" } }'		
+   var postdata ='{ "request": { "streamname": "TestStream155", "source": { "type": "http", "attributes": [{ "key": "server.port", "value": "9001" }] }, "processor": { "type": "pmml", "attributes": [{ "key": "label", "value": "pmml" }, { "key": "inputs", "value":"Sepal.Length=payload.sepalLength,Sepal.Width=payload.sepalWidth,Petal.Length=payload.petalLength,Petal.Width=payload.petalWidth" }, { "key": "modelLocation", "value": "file:///D:/SCDFSoftWares/iris-flower-classification-naive-bayes-1.pmml.xml" }, { "key": "outputs", "value": "Predicted_Species=payload.predictedSpecies" }, { "key": "inputtype", "value": "application/x-spring-tuple" }, { "key": "outputtype", "value": "application/json" }  ] }, "sink": { "type": "log", "attributes": [{ "key": "label", "value": "log" }] }, "tapstreamname": "file-content", "deploy": "true" } }'
+  
+  
+  
+	/* obj = JSON.parse(text);
+	document.getElementById("demo").innerHTML = obj.employees[1].firstName
+			+ " " + obj.employees[1].lastName; */
+	$("#deploycall").click(function(){
+		$.ajax({
+			url : "./deploy",
+			type : "POST",
+			data : postdata,
+			dataType : "json",
+			contentType : "application/json; charset=utf-8",
+			success : function() {
+				
+			}
+		});
+	});
+});
+</script>
+</head>
+ <body style="background-color:powderblue;">
+
+	<h2 align="center">Create Stream from JSON Data</h2>
+
+	<p id="demo"></p>
+
+
+	<div align="center">
+		<input type="button" value="deploy" id="deploycall" />
+	</div>
+
+</body>
+</html>

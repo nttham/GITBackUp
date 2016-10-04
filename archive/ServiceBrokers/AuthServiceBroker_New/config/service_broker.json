@@ -1,0 +1,49 @@
+{
+  "credentials": {
+    "authUser": "Oauth",
+    "authPassword": "Oauth"
+  },
+  "catalog": {
+    "apiVersion": "2.4.0",
+    "defaultVersion": "1.0",
+    "name": "Authentication",
+    "url": "auto",
+    "services": [
+      {
+        "id": "5b20d1af-280b-416e-8a3c-aed9575f415a",
+        "bindable": true,
+        "name": "Authentication",
+        "version": "1.0",
+        "description": "Provides AuthService instance Details",
+        "tags": [
+            "svc_offr_microService"
+          ],
+        "metadata": {
+          "providerDisplayName": "Authentication Service",
+          "tags": [
+            "Authentication Service",
+            "Authentication",
+            "oauth"
+          ]
+        },
+        "plans": [
+          {
+            "name": "free",
+            "id": "ebdec99f-2982-4a5f-b114-4ae0b8e6d972",
+            "description": "free",
+            "public": true,
+            "free": true
+          }
+        ]
+      }
+    ]
+  },
+  "plans": {
+    "ebdec99f-2982-4a5f-b114-4ae0b8e6d972": {
+      "parameters": {
+        "key1": "value1",
+        "key2": "value2"
+      }
+    }
+  }
+}

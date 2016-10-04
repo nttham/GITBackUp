@@ -1,0 +1,16 @@
+{
+  "name": "LoggerServiceBroker",
+  "version": "0.1.0",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node logger-service-broker.js"
+  },
+  "dependencies": {
+    "async": "0.6.2",
+    "restify": "2.8.5",
+    "cf-nodejs-client": "0.13.0",
+    "request": "2.67.0",
+    "uuid": "2.0.2"
+  }
+}

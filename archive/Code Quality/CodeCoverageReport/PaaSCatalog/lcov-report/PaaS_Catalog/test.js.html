@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for PaaS_Catalog/test.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">PaaS_Catalog/</a> test.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>86/86</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>33/33</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>86/86</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var chai = require('chai');
+var chaiHttp = require('chai-http');
+var server = require('./app.js');
+var should = chai.should();
+chai.use(chaiHttp);
+&nbsp;
+var todoID;
+&nbsp;
+/**
+ * Test Suites
+ */
+describe('PaaSCatalog Test Cases', function () {
+    var authToken = 'bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiJkYjM0MTExYTE3ODY0NDc2YjM1ZTEzYTI1Mzc3OTEyZSIsInN1YiI6IjJmMTdjZDgyLTNkNzItNDZhMS05OGI0LTI3MDU4ZjlkNWVhYyIsInNjb3BlIjpbImNsb3VkX2NvbnRyb2xsZXIucmVhZCIsInBhc3N3b3JkLndyaXRlIiwiY2xvdWRfY29udHJvbGxlci53cml0ZSIsIm9wZW5pZCIsInVhYS51c2VyIl0sImNsaWVudF9pZCI6ImNmIiwiY2lkIjoiY2YiLCJhenAiOiJjZiIsImdyYW50X3R5cGUiOiJwYXNzd29yZCIsInVzZXJfaWQiOiIyZjE3Y2Q4Mi0zZDcyLTQ2YTEtOThiNC0yNzA1OGY5ZDVlYWMiLCJvcmlnaW4iOiJ1YWEiLCJ1c2VyX25hbWUiOiJzcmkiLCJlbWFpbCI6InNyaSIsInJldl9zaWciOiJkM2M1ODgzYSIsImlhdCI6MTQ2NzY5NTY4OCwiZXhwIjoxNDY3Njk2Mjg4LCJpc3MiOiJodHRwczovL3VhYS41NC4yMDguMTk0LjE4OS54aXAuaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiY2xvdWRfY29udHJvbGxlciIsInBhc3N3b3JkIiwiY2YiLCJ1YWEiLCJvcGVuaWQiXX0.vSEhjcVsNJ_QVDZl_5Kj1RBU8FdwPFpg46JBKdgIlwN75S7_2mTuKYJymO3BmrBRfVuV13ikaP8yreMqA_JoNOB1x1O5nYiajHKMt12OYB2YJZw5OUEbVErNTXBG9OL_8kvzeUjWUoC1tmCiKd-iMQiwm1cBM_8zmfvNocMqOP4';
+    // Start the server before the test case with delay of 1second to instantiate the routers
+    before(function (done) {
+        this.request = chai.request(server);
+        setTimeout(function () {
+            done();
+        }, 1000);
+    });
+    describe('Getting of particular data based on type', function () {
+        it('should be able to GET entire data without any problem', function (done) {
+            this.timeout(15000);
+            this.request.get('/PaaSCatalog/catalog?type=category')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.have.property('text');
+                    res.body.should.have.property('categories');
+                    done();
+                });
+        });
+    });
+    describe('Getting of particular data based on type', function () {
+        it('should be able to GET entire data without any problem', function (done) {
+            this.timeout(15000);
+            this.request.get('/PaaSCatalog/catalog?type=hooks')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.have.property('text');
+                    done();
+                });
+        });
+    });
+    describe('Getting of particular data based on type', function () {
+        it('should be able to GET entire data without any problem', function (done) {
+            this.timeout(15000);
+            this.request.get('/PaaSCatalog/catalog?type=services&amp;category=Authentication')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.have.property('text');
+                    done();
+                });
+        });
+    });
+&nbsp;
+    describe('Method Search', function () {
+        it('should able to search data based on user search string', function (done) {
+            this.timeout(15000);
+            var searchString = 'facebbok';
+            this.request.get('/PaaSCatalog/searchCatalog?searchString=facebook&amp;type=category')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.have.property('text');
+                    res.body.should.be.an.Array;
+                    done();
+                });
+        });
+    });
+&nbsp;
+    describe('Method Get Data', function () {
+        it('should be able to get required data without problems', function (done) {
+            this.timeout(15000);
+            this.request.get('/PaaSCatalog/platformservices?id=1234567890&amp;platform=cognizantone,bluemix')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.body.should.have.property('keys');
+                    done();
+                });
+        });
+    });
+&nbsp;
+    describe('Method Get organizations', function () {
+        it('should be able to get organizations in the selected platform', function (done) {
+            this.timeout(15000);
+            var options = {
+                Authorization:authToken,
+                api_url:'http://api.54.208.194.189.xip.io'
+            };
+            this.request.get('/PaaSCatalog/organizations')
+                .set(options)
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.body.should.be.an.Array;
+                    done();
+                });
+        });
+    });
+&nbsp;
+    describe('Method Get Spaces', function () {
+        it('should be able to get spaces in the selected platform', function (done) {
+            this.timeout(15000);
+            var options = {
+                Authorization:authToken,
+                api_url:'http://api.54.208.194.189.xip.io'
+            };
+            this.request.get('/PaaSCatalog/spaces')
+                .set(options)
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.body.should.be.an.Array;
+                    done();
+                });
+        });
+    });
+&nbsp;
+    describe('Method Get layouts Data', function () {
+        it('should be able to get layouts json data without problems', function (done) {
+            this.timeout(15000);
+            this.request.get('/PaaSCatalog/layouts')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.body.should.be.an.Array;
+                    done();
+                });
+        });
+    });
+&nbsp;
+    describe('Method Get regions Data', function () {
+        it('should be able to get regions json data without problems', function (done) {
+            this.timeout(15000);
+            this.request.get('/PaaSCatalog/regions?platformID=2004')
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    done();
+                });
+        });
+    });
+&nbsp;
+    describe('Method to check AppName existence', function () {
+        it('should be able to check the appname is existed in the selected platform or not', function (done) {
+            this.timeout(15000);
+            var options = {
+                Authorization:authToken,
+                api_url:'http://api.54.208.194.189.xip.io',
+                spaceguid:'b169a527-a10a-4a84-a45a-2909fee6b1d9',
+                appname:'paascatalog'
+            };
+            this.request.get('/PaaSCatalog/appNameCheck')
+                .set(options)
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    //res.body.should.be.an.Array;
+                    done();
+                });
+        });
+    });
+});
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 05 2016 10:53:10 GMT+0530 (IST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+---
+applications:
+- name: LoggerBroker
+  memory: 250MB
+  instances: 1

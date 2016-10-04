@@ -1,0 +1,21 @@
+{
+    "name": "otp",
+    "version": "1.0.0",
+    "description": "This will generate and validate OTP",
+    "main": "otpserver.js",
+    "scripts": {
+        "test": "node_modules/.bin/mocha -w",
+        "start": "node otpserver.js"
+    },
+    "author": "Neethu",
+    "license": "ISC",
+    "dependencies": {
+        "sendgrid": "*",
+        "express": "~3.3.4",
+        "body-parser": "*",
+        "mocha": ">= 0.9.0",
+        "chai": ">= 0.1.6",
+        "should":"*"
+    }
+
+}
